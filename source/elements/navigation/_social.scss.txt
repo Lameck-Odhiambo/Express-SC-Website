@@ -1,0 +1,92 @@
+.navigation.social {
+  $local-margin: 5px;
+  @include list-reset();
+
+  nav {
+    /*@include padding-x( 50px );
+    @include breakpoint($bp-portrait) {
+      @include padding-x( 0 );
+    }*/
+  }
+
+  ul {
+    @include margin-x( $local-margin * -1 );
+    text-align: center;
+    margin-top: 0;
+
+    @include breakpoint($bp-big) {
+      text-align: right;
+    }
+
+    li {
+      @include padding-x( $local-margin );
+      @include inline-element( middle );
+      margin-bottom: $local-margin * 0.5;
+    }
+  }
+
+  a {
+    @include transition();
+    //@include background-color-alpha( $color-white, 0.6 );
+    display: block;
+    width: 43px;
+    height: 43px;
+    -webkit-border-radius: 60%;
+    -moz-border-radius: 60%;
+    border-radius: 60%;
+
+    //color: $m1;
+    text-indent: 999em;
+    white-space: nowrap;
+    overflow: hidden;
+    position: relative;
+
+    @include breakpoint($bp-phablet) {
+      width: 50px;
+      height: 50px;
+    }
+
+    &:hover {
+      background-color: $color-white;
+      //background-color: #f00;
+    }
+
+    &:after {
+      position: absolute;
+      text-indent: 0;
+      text-align: center;
+      top: 50%;
+      right: 0;
+      width: 100%;
+      font-size: 18px;
+      -webkit-transform: translateY(-50%);
+      -moz-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      -o-transform: translateY(-50%);
+      transform: translateY(-50%);
+    }
+
+    &[href*='facebook']:after {
+      @include font-icon( $glyph-facebook );
+    }
+    &[href*='google']:after {
+      @include font-icon( $glyph-google-plus );
+    }
+    &[href*='instagram']:after {
+      @include font-icon( $glyph-instagram );
+    }
+    &[href*='linkedin']:after {
+      @include font-icon( $glyph-linkedin );
+    }
+    &[href*='blog']:after {
+      //this one is a bit trickier
+      @include font-icon( $glyph-feed );
+    }
+    &[href*='twitter']:after {
+      @include font-icon( $glyph-twitter );
+    }
+    &[href*='youtube']:after {
+      @include font-icon( $glyph-youtube );
+    }
+  }
+}

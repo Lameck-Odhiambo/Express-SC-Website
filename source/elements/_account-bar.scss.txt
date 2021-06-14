@@ -1,0 +1,134 @@
+$account-bar-height: 35px;
+$account-bar-link-size: 14px;
+$account-bar-link-line-height: (20/14);
+
+
+
+//account bar styling
+body.fsAccountBarVisible{
+  margin-top:35px;
+}
+
+#fsAccountBar{
+  //== application.css output (for reference) ==//
+  //cursor: default;
+  //font-size: 16px;
+  //height: 35px;
+  //position: fixed;
+  //top: 0;
+  //width: 100%;
+  //z-index: 1000
+
+  height: $account-bar-height;
+
+  background-color: mix( $m1, $color-black, 80% );
+  color: $color-white;
+
+  padding: 0;
+  z-index: 9999;
+
+  &> ul {
+    &:first-child {
+      &> li {
+        &:first-child {
+          padding: 0;
+          width: $account-bar-height;
+          height: $account-bar-height;
+
+          @include breakpoint($bp-portrait) {
+            padding: (( $account-bar-height - ( $account-bar-link-size * $account-bar-link-line-height ) )  / 2) ($gutter * 0.5);
+          }
+
+          ul {
+            @include breakpoint($bp-portrait) {
+              margin-left:35px;
+            }
+          }
+
+
+        }
+
+      }
+    }
+
+    &> li {
+      @include transition();
+      cursor:pointer;
+      margin:0;
+      vertical-align: top;
+      //padding:0 1em;
+
+
+      padding: ( ( $account-bar-height - ( $account-bar-link-size * $account-bar-link-line-height ) )  / 2 ) ($gutter * 0.5);
+
+      &, a {
+        color: $color-white;
+        font-size: $account-bar-link-size;
+        line-height: $account-bar-link-line-height;
+      }
+
+      &:hover{
+        background-color: mix( $m1, $color-black, 70% );
+      }
+
+
+    }
+
+  }
+
+  .fsAccountBarMenu {
+    margin-left: 0;
+
+    @include breakpoint($bp-portrait) {
+      margin-left: -12px;
+    }
+  }
+  .fsAccountBarName {
+    display: none;
+
+    @include breakpoint($bp-portrait) {
+      display: inline;
+    }
+  }
+  .fsAccountBarAvatar {
+    //position: relative;
+    //
+    //@include breakpoint($bp-portrait) {
+    //  position: absolute;
+    //}
+  }
+
+
+  //menus
+  .fsAccountBarMenu {
+    background-color: mix( $m1, $color-black, 70% );
+    border-width:0;
+    left:0;
+
+    a {
+      color: mix( $m1, $color-white, 40% );
+      font-size: 12px;
+      line-height: (15/12);
+
+      margin: 0;
+      padding: ( ( 24px - 15 )  / 2 ) ($gutter * 0.5);
+
+      &:hover {
+        color: $color-white;
+        opacity: 1;
+      }
+    }
+
+    li {
+      padding: 0;
+      &:hover{
+        background-color: mix( $m1, $color-black, 90% );
+      }
+    }
+
+    ul{
+      background-color: mix( $m1, $color-black, 70% );
+      left:100%;
+    }
+  }
+}

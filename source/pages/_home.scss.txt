@@ -1,0 +1,1124 @@
+.home {
+
+  #fsBannerLeft,
+  #fsBannerRight {
+    display: none;
+  }
+
+  #fsPageBodyWrapper {
+    @include padding-x( 0 );
+    @include padding-y( 0 );
+    background: $page-content-background-color;
+  }
+
+  #fsPageContent {
+    &> .fsLayout {
+      margin: 0;
+      padding: 0;
+
+      &> .fsDiv {
+        margin: 0;
+        padding: 0;
+        float: none;
+      }
+    }
+  }
+
+  #fsHeader .navigation.main {
+      background: rgba($m1,0.9);
+      position: absolute;
+      width: 100%;
+  }
+
+
+}
+
+// ================================
+// Masthead
+// ================================
+.home .fsPlayer.masthead {
+  //gets image background from JS
+  //background-color: $m1;
+  //padding: $gutter;
+  clear: both;
+  margin: 0;
+  padding: 0;//bottom accommodates button(s)
+  position: relative;
+
+  &> header,
+  .fsElementContent {
+  }
+
+
+  &> header {
+    display: none;
+
+    @at-root .fsComposeMode.home .fsPlayer.masthead header {
+      display: block;
+    }
+
+    .fsElementTitle { }
+    .fsElementHeaderContent { }
+  }
+
+  .fsElementContent {
+    //display: none;
+    @include transition();
+
+    background-color: mix( $m2, $color-white, 50% );
+    //padding-bottom: percentage( 250 / 320 );
+    position: relative;
+
+    @include breakpoint($bp-portrait) {
+      padding-bottom: percentage( 600 / 800 );
+    }
+
+    @include breakpoint($bp-landscape) {
+      padding-bottom: percentage( 800 / 1200 );
+    }
+
+    @include breakpoint($bp-desktop) {
+      padding-bottom: 800px;
+    }
+
+    &:after {
+      @include font-icon( $glyph-spinner );
+      @include animation-spin();
+      //content: 'loading';
+      width: 100%;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      text-align: center;
+      color: mix( $m2, $color-white, 70% );
+      font-size: 60px;
+      text-transform: uppercase;
+      font-weight: 700;
+
+      -webkit-transform: translateY(-50%);
+      -moz-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      -o-transform: translateY(-50%);
+      transform: translateY(-50%);
+
+    }
+
+
+    .has-masthead & {
+      padding-bottom: 0;
+
+      &:after { content: normal; }
+    }
+
+
+  }
+
+  &> footer {
+    display: none;
+  }
+
+  .cluster {
+    position: absolute;
+    bottom: 40%;
+    width: 100%;
+
+    &> .inner {
+      @include margin-x(0);
+
+      @include breakpoint($bp-portrait) {
+        @include margin-x( auto );
+      }
+    }
+  }
+
+  .slide {
+    //@include dev-color();
+    &> .inner {
+      //@include dev-color(#0f0);
+      position: relative;
+    }
+
+    .image {
+      //@include dev-color(#00f);
+      position: relative;
+    }
+
+    .overlay {
+      display: none;
+      position: absolute;
+
+      top: 0;
+      left: 0;
+
+      width:100%;
+      height: 100%;
+      z-index:1;
+      opacity: 0.50;
+
+      background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSI1MCUiIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMCIvPgogICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMDAwMDAwIiBzdG9wLW9wYWNpdHk9IjEiLz4KICA8L2xpbmVhckdyYWRpZW50PgogIDxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9InVybCgjZ3JhZC11Y2dnLWdlbmVyYXRlZCkiIC8+Cjwvc3ZnPg==);
+      background: -moz-linear-gradient(top,  rgba(0,0,0,0) 50%, rgba(0,0,0,1) 100%);
+      background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 50%,rgba(0,0,0,1) 100%);
+      background: linear-gradient(to bottom,  rgba(0,0,0,0) 50%,rgba(0,0,0,1) 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#000000',GradientType=0 );
+
+      @include breakpoint($bp-portrait) {
+        display: block;
+      }
+    }
+
+    .details {
+
+      //@include dev-color(#4f6);
+      background: $m2;
+
+      //display: none;
+      color: $home-masthead-detail-color;
+      padding: ( $gutter * 1.5 ) ( $gutter * 2.5 ) ( $gutter * 1 );
+      text-align: center;
+
+      @include breakpoint($bp-portrait) {
+        display: block;
+        padding: 0 $gutter ( $home-block-vertical-offset + $home-carousel-arrow-dimensions );
+
+        z-index:2;
+        background: none;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        text-align: left;
+
+
+       // @include compartment( 700px );
+      }
+      @include breakpoint($bp-landscape) {
+        //@include compartment( 960px );
+      }
+      @include breakpoint($bp-desktop) {
+        //@include compartment( $boundry * 1px );
+      }
+
+      &> .inner {
+        //@include dev-color(#64f);
+
+        text-shadow: 1px 1.5px 3px returnRGBA( $color-black, 0.2 );
+
+        @include breakpoint($bp-portrait) {
+          @include compartment( 700px );
+        }
+        @include breakpoint($bp-landscape) {
+          @include compartment( 960px );
+        }
+        @include breakpoint($bp-desktop) {
+          @include compartment( $boundry * 1px );
+        }
+      }
+
+      .title {
+        @extend %h1;
+        color: $home-masthead-detail-color;
+        font-size: ( $h1-size * 0.5 );
+        margin-bottom: 8px;
+
+        @include breakpoint($bp-portrait) {
+          font-size: $h1-size;
+        }
+
+        &:empty {
+          display: none;
+        }
+      }
+      .copy {
+        font-family: $home-masthead-detail-copy-family;
+        font-size: ($home-masthead-detail-copy-size * 0.5);
+        line-height: $home-masthead-detail-copy-line-height;
+        max-width: 600px;
+
+        @include breakpoint($bp-portrait) {
+          font-size: $home-masthead-detail-copy-size;
+
+          border-left: 5px solid $m2;
+          padding-left: 20px;
+        }
+
+
+        &:empty {
+          display: none;
+        }
+        p {
+          margin:0px;
+        }
+        a {
+          @include arrow-button($color-white,1,0.5);
+
+          display: block;
+          margin-top: 10px;
+
+          color:$color-white;
+          font-family: $sans-serif;
+          font-weight: bold;
+          text-transform: uppercase;
+          font-size:13px;
+          line-height: (24/17);
+
+          @include breakpoint($bp-portrait) {
+            font-size:17px;
+          }
+
+        }
+      }
+    }
+  }
+
+  .container.masthead {
+    @include transition();
+    max-height: 0;
+    overflow: hidden;
+
+    .has-masthead & {
+      max-height: 825px;
+    }
+  }
+
+}
+
+// ================================
+// News
+// ================================
+.home .fsNews {
+  @include transition();
+  @include compartment();
+  @include padding-x( $gutter * 1.5 );
+  overflow: hidden;
+
+  @include padding-y( $gutter * 2 );
+
+  @include breakpoint($bp-portrait) {
+    @include padding-y( $gutter * 3.5 ); //70px? Really?
+  }
+
+  @include breakpoint( $bp-desktop ) {
+    @include padding-x( 0 );
+  }
+
+  //@include dev-color();
+  // @include shared-home-section-padding();
+  // clear: both;
+  // margin: 0;
+
+  // &> header,
+  // .fsElementContent {
+  //   @include breakpoint($bp-portrait) {
+  //     @include compartment( 700px );
+  //   }
+  //   @include breakpoint($bp-landscape) {
+  //     @include compartment( 960px );
+  //   }
+  //   @include breakpoint($bp-desktop) {
+  //     @include compartment( $boundry * 1px );
+  //   }
+  // }
+
+
+  &> header {
+    overflow: hidden;
+    // display: none;
+    border: none;
+    //@include dev-color();
+
+    padding: 0;
+    margin: 0 0 ( $gutter * 1 );
+
+    @include breakpoint($bp-portrait) {
+      margin-bottom: ( $gutter * 2 );
+    }
+
+    // padding: 0;
+    // .fsElementTitle { }
+    // .fsElementHeaderContent { }
+    .fsElementHeaderContent {
+      float: none;
+      h2 {
+        float: left;
+        margin: 0;
+      }
+      h6 {
+        float: right;
+        margin-bottom: 0px;
+        margin-top: 18px; 
+      }
+    }
+  }
+
+  .fsElementContent {
+    //@include dev-color();
+    overflow: hidden;
+
+    .fsListItems {
+      //@include margin-x( $gutter * -0.5 );
+      article {
+        height:245px;
+        background:$g3;
+        background-size:cover;
+        background-position:center center;
+        border:0px;
+        border-radius:4px;
+        position: relative;
+
+
+        display: block;
+        //width: auto;
+        float: none;
+        margin-bottom: 0 !important;
+        margin-top: $gutter !important;
+
+        &:first-child {
+          margin-top: 0 !important;
+        }
+
+        @include breakpoint($bp-portrait) {
+          float: left;
+          margin-top: 0 !important;
+          margin-bottom: 0 !important;
+
+          //Trickery to show the first Two w/o resorting to nth-child
+          display: none;
+          &:first-child {
+            &, & + article {
+              display: block;
+            }
+          }
+
+        }
+
+        @include breakpoint($bp-landscape) {
+          //Undoing aforementioned trickery
+          display: block;
+        }
+
+        &:hover {
+          .newsOverlay {
+            @include breakpoint($bp-phablet) {
+              top:0;
+            }
+            .fsSummary,
+            .fsNewsPostLink.fsReadMoreLink {
+              opacity: 1;
+            }
+          }
+        }
+
+        .newsOverlay {
+          position: absolute;
+          background:rgba($m1,0.95);
+          width:100%;
+          top: auto;
+          left:0;
+          bottom: 0;
+          padding:10px 30px;
+          transition: top 0.25s linear;
+
+          @include breakpoint($bp-phablet) {
+            top: 160px;
+            bottom: auto;
+            height:100%;
+          }
+
+          .fsTitle {
+            margin-bottom:10px;
+            &> a {
+              font-family: $sans-serif;
+              font-weight: bold;
+              font-size:18px;
+              line-height: 22px;
+              color:$color-white;
+              &:hover {
+                opacity: 0.7;
+                color:$color-white;
+              }
+            }
+
+          }
+
+          .fsSummary {
+            display: none;
+
+            font-family: $sans-serif;
+            font-weight: 400;
+            font-size:15px;
+            line-height: 18px;
+            color:$color-white;
+            opacity: 0;
+            transition: opacity 0.25s linear;
+
+            @include breakpoint($bp-phablet) {
+              display: block;
+            }
+          }
+
+          .fsNewsPostLink.fsReadMoreLink {
+            @include arrow-button($color-white,1,0.5);
+            display: none;
+            font-family: $sans-serif;
+            font-weight:400;
+            font-size: 13px;
+            text-transform: uppercase;
+            //color:$color-white;
+            //opacity: 0;
+            //transition: opacity 0.25s linear;
+
+            color:$color-white;
+            &:hover {
+              opacity: 0.7;
+              color:$color-white;
+            }
+            @include breakpoint($bp-phablet) {
+              display: block;
+            }
+          }
+
+        } 
+        // @include transition();
+        // padding: 0 ( $gutter * 0.5 );
+        // margin: 0;
+
+        // width: percentage( 1 / 3);
+        // height: 1px;
+        // overflow: hidden;
+        // opacity: 0.1;
+        // visibility: hidden;
+
+        // &:first-child {
+        //   visibility: visible;
+        //   height: auto;
+        // }
+
+        .fsTitle {
+          //@include heading( 18px, 24px, 0 );
+        }
+
+        .fsDate {
+          //color: $g3;
+        }
+
+        // .home-news-ready & {
+        //   width: auto;
+        //   opacity: 1;
+        //   visibility: visible;
+        //   height: auto;
+        // }
+
+
+
+        // img {
+        //   width: 100%;
+        // }
+      }
+    }
+
+  }
+
+  &> footer {
+  }
+
+}
+
+// ================================
+// Calendar
+// ================================
+.home .fsCalendar {
+  @include bg-cover();
+  position: relative;
+  margin: 0;
+
+  @include padding-y( $gutter * 2 );
+
+  @include breakpoint($bp-portrait) {
+    @include padding-y( $gutter * 2.5 );
+  }
+
+
+  &> header {
+    border:0px;
+    text-align: center;
+    z-index:2;
+    position: relative;
+
+
+
+    .fsElementTitle,
+    h2 {
+      display: none; // :(
+    }
+
+    .fsElementHeaderContent {
+      display: block;
+      float: none;
+      //@include dev-color();
+
+      padding-bottom: 22px;
+      position: relative;
+
+      &:after {
+        @include background-color-alpha( $color-white, 0.5 );
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        margin-left: -80px;
+        width: 160px;
+        height: 5px;
+      }
+
+      @include breakpoint($bp-portrait) {
+        font-size: 48px;
+      }
+
+      a {
+        font-family: $serif;
+        font-weight: 400;
+        font-size: 36px;
+        color:$color-white;
+        text-transform: none;
+        opacity: 1;
+
+        &:hover {
+          opacity: 0.7;
+        }
+
+        &:after { content: normal; }
+
+        @include breakpoint($bp-portrait) {
+          font-size: 48px;
+        }
+
+      }
+
+
+    }
+  }
+
+
+  .fsElementContent {
+    z-index:2;
+    .fsElementSlideshow {
+
+
+    }
+
+    article {
+      border:0px ;
+      padding: 0px;
+      text-align: center;
+      color: $color-white;
+
+      padding-top: $calendar-floating-date-dimension + ( $calendar-floating-date-border-width * 2 ) + $gutter;
+
+      //@include dev-color();
+
+      .fsDate {
+        position: absolute;
+        top: 0;
+        left: 50%;
+
+        height: $calendar-floating-date-dimension + ( $calendar-floating-date-border-width * 2 );
+        width: $calendar-floating-date-dimension + ( $calendar-floating-date-border-width * 2 );
+        padding-top: 5px;
+        text-align: center;
+        background: transparent;
+        border-radius: 100%;
+        color: $g1;
+
+        border: $calendar-floating-date-border-width solid mix( $m2, $color-white, 50% );
+        border-color: returnRGBA( $color-white, 0.5 );
+
+        -webkit-transform: translateX(-50%);
+        -moz-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        -o-transform: translateX(-50%);
+        transform: translateX(-50%);
+
+        overflow: hidden;
+
+        &:before {
+          content: '';
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          z-index: 0;
+          background: $color-white;
+        }
+
+        .fsDayName,
+        .fsDay,
+        .fsMonth {
+          position: relative;
+          z-index: 1;
+        }
+
+        // Mon
+        .fsDayName {
+          margin-top: 5px;
+          font-size:13px;
+          line-height: (15/13);
+          color:$g3;
+          font-family: $sans-serif;
+          text-transform: uppercase;
+          font-weight: bold;
+        }
+
+        // Feb
+        .fsMonth {
+          font-size:13px;
+          line-height: (15/13);
+          color:$g3;
+          font-family: $sans-serif;
+          text-transform: uppercase;
+          //position: relative;
+          top: 0;
+          font-weight: bold;
+          margin-top: 0;
+        }
+
+        // 12
+        .fsDay {
+          font-size: 60px;
+          line-height: ( 45 / 60 );
+          font-family: $serif;
+          color: $m1;
+          margin-top: 5px;
+
+        }
+
+      }
+      .fsTitle {
+        //@include dev-color();
+        color: $color-white;
+        &, a {
+          color: $color-white !important;
+        }
+
+        a:hover { color: $m1; }
+      }
+      .fsEventDetails {
+        //@include dev-color();
+      }
+
+      .fsLocation {
+        margin-top: 0;
+      }
+
+    }
+
+  }
+  .calOverlay {
+    position: absolute;
+    background:rgba($m2,0.75);
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index: 1;
+  }
+
+  .fsPrevButton:before,
+  .fsNextButton:before {
+    color: mix( $m2, $color-white, 50% );
+    color: returnRGBA( $color-white, 0.5 );
+  }
+  .fsPrevButton:hover:before,
+  .fsNextButton:hover:before {
+    color: mix( $m2, $color-white, 10% );
+    color: returnRGBA( $color-white, 0.9 );
+  }
+
+}
+
+// ================================
+// Stories
+// ================================
+.home .stories {
+
+  @include compartment();
+
+  @include padding-x( $gutter * 1 );
+  @include padding-y( $gutter * 2 );
+
+  //margin-top:50px;
+  //margin-bottom:70px;
+  //padding: 0 ($gutter * 1.5);
+
+  @include breakpoint($bp-portrait) {
+    @include transition();
+    @include padding-x( $gutter * 1.5 );
+    @include padding-y( $gutter * 3.5 );
+  }
+
+  @include breakpoint($bp-desktop) {
+    @include padding-x( 0 );
+  }
+
+  .fsDiv.fsStyleColumn {
+    background-color: $background-color;
+    border:1px solid $background-stroke;
+    margin-bottom: 0px;
+    padding: $gutter;
+    border-radius: 5px !important;
+    //min-height:525px;
+
+    .fsElementContent :last-child { margin-bottom: 0 !important; }
+
+    @include breakpoint($bp-portrait) {
+      height: 510px;
+      border-radius:0;
+    }
+
+    &.fsStyleColumn-1 {
+      margin-right: -0.5px;
+      //border-radius: 5px 0 0 5px;
+      margin-bottom: ($gutter * 1.5);
+      @include breakpoint($bp-2-column) {
+        margin-bottom: 0;
+        border-top-right-radius: 0 !important;
+        border-bottom-right-radius: 0 !important;
+      }
+    }
+    &.fsStyleColumn-2 {
+      margin-left: -0.5px;
+      //border-radius: 0 5px 5px 0;
+
+      @include breakpoint($bp-2-column) {
+        border-top-left-radius: 0 !important;
+        border-bottom-left-radius: 0 !important;
+      }
+    }
+    .fsElementContent {
+      img { width: 100%; }
+      h4 {
+        font-size: 36px;
+        font-family: $serif;
+        margin-bottom: 10px;
+      }
+      p {
+        font-size:($body-font-size - 2);
+      }
+      a {
+        @include arrow-button($m2, 1, 0.5);
+        font-family: $sans-serif;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size:13px;
+        color:$m2;
+      }
+    }
+  }
+}
+
+
+
+
+// ================================
+// Spotlight Infographics
+// ================================
+.home section.spotlight {
+  //gets image background from JS
+  //background-color: $m1;
+  //padding: $gutter;
+  clear: both;
+
+  &> header,
+  .fsElementContent,
+  .spotlight.container > .inner {
+    @include breakpoint($bp-portrait) {
+      @include compartment( 700px );
+    }
+    @include breakpoint($bp-landscape) {
+      @include compartment( 960px );
+    }
+    @include breakpoint($bp-desktop) {
+      @include compartment( $boundry * 1px );
+    }
+  }
+
+
+  &> header {
+    display: none;
+    .fsElementTitle { }
+    .fsElementHeaderContent { }
+  }
+
+  .fsElementContent {
+    display: none;
+    dl {
+      dt,
+      dd {
+        margin: 0;
+        padding: 0;
+      }
+      dt {
+        font-weight: 700;
+      }
+      dd {
+        margin-bottom: ( $gutter * 0.5 );
+      }
+    }
+  }
+
+  &> footer {
+    display: none;
+  }
+
+  .spotlight.container {
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    background-image: none;
+
+    @include breakpoint($bp-portrait) {
+    }
+
+    &:before {
+      @include transition();
+      background-color: $page-content-background-color;
+      //todo: extract!
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 0;
+
+      @include breakpoint($bp-portrait) {
+        @include background-color-alpha( $m1, 0.8 );
+      }
+    }
+
+    &> .inner {
+      @include shared-home-section-padding();
+      position: relative;
+      z-index: 1;
+
+      @include breakpoint($bp-portrait) {
+        padding-top: ( $gutter * 3.5 );
+      }
+
+      h2 {
+        @include transition();
+        color: $d1;
+        text-align: center;
+
+        @include breakpoint($bp-portrait) {
+          color: $color-white;
+        }
+      }
+
+    }
+
+    .carousel {
+
+      .slide {
+        &> .inner {
+          text-align: center;
+          padding: ( $gutter * 0.5 );
+        }
+
+        .number {
+          @include transition();
+          display: inline-block;
+          //todo: extract!
+          color: $m3;
+          font-family: $serif;
+          letter-spacing: normal;
+          font-style: normal;
+          font-size: 50px;
+          line-height: (60/50);
+
+          width: 160px;
+          height: 160px;
+          -webkit-border-radius: 100%;
+          -moz-border-radius: 100%;
+          border-radius: 100%;
+          position: relative;
+
+          border: 1px solid $g1;
+
+          @include breakpoint($bp-portrait) {
+            border-color: $color-white;
+            border-color: returnRGBA( $color-white, 0.5 );
+          }
+
+          &> span {
+            width: 100%;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            text-align: center;
+
+            -webkit-transform: translateY(-50%);
+            -moz-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            -o-transform: translateY(-50%);
+            transform: translateY(-50%);
+          }
+        }
+
+        .label {
+          @include transition();
+          color: $d1;
+          margin-top: ( $gutter * 1.5 );
+
+          @include breakpoint($bp-portrait) {
+            color: $color-white;
+          }
+        }
+
+      }
+
+    }
+
+
+
+  }
+
+  //.fsComposeMode
+}
+
+
+// ================================
+// Control Cluster(s)
+// for the Ubiquitous
+// Carousel Controls
+// ================================
+.home .cluster {
+  //todo: extract??
+
+  &> .inner {
+    @include margin-x( $gutter * -1 );
+    margin-top: $home-block-vertical-offset-mobile;
+    display: block;
+    padding: 0 $home-carousel-arrow-dimensions;
+    position: relative;
+
+    @include breakpoint($bp-portrait) {
+      @include margin-x( auto );
+      margin-top: $home-block-vertical-offset;
+      width: 100%; //240px + ( $home-carousel-arrow-dimensions * 2 );
+    }
+  }
+
+  button, .link {
+  }
+
+  button {
+    @include button-reset();
+    @include transition();
+    width: $home-carousel-arrow-dimensions;
+    height: ( $home-carousel-arrow-dimensions * 2 );
+    color: $color-white;
+    position: absolute;
+    bottom: 0;
+    z-index: 2;
+    overflow: hidden;
+    text-indent: -666em;
+
+    @include breakpoint($bp-portrait) {
+      border: 1px solid rgba( 255,255,255,0.75);
+      background-color: rgba($color-black,0.25);
+    }
+
+
+    @include breakpoint($bp-portrait) {
+      //@include background-color-alpha( $m2, 0.8 );
+    }
+
+
+    &:hover {
+      //background-color: $m3;
+      background-color: rgba($color-black,0.5);
+    }
+
+    &:after {
+      @include font-icon( $glyph-close );
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      text-indent: 0;
+      font-size: 32px;
+
+      @include breakpoint($bp-portrait) {
+        font-size: 26px;
+      }
+
+      -webkit-transform: translateY(-50%);
+      -moz-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      -o-transform: translateY(-50%);
+      transform: translateY(-50%);
+    }
+
+    &.previous,
+    &.next {
+
+    }
+    &.previous {
+      left: 0;
+      right: auto;
+      border-left: 0px;
+      border-radius: 0px 40px 40px 0px;
+
+      &:after { content: $glyph-angle-left; left:-6px; }
+    }
+    &.next {
+      left: auto;
+      right: 0;
+      border-right: 0px;
+      border-radius: 40px 0px 0px 40px;
+
+      &:after { content: $glyph-angle-right;left:6px; }
+    }
+  }
+
+  .link {
+    display: block;
+
+    a {
+      display: block;
+      text-align: center;
+
+      color: $color-white;
+      font-family: $sans-serif;
+      font-size: 14px;
+      line-height: (21/14);
+      padding: ( ( $home-carousel-arrow-dimensions - 21 ) / 2 ) ( $gutter * 0.5 );
+      text-transform: uppercase;
+      font-weight: 600;
+
+      background-color: $m2;
+
+      &:hover {
+        background-color: $m3;
+      }
+
+    }
+  }
+
+}
+
+
+
+#fsHeader .thing {
+
+  &> header {
+    .fsElementTitle { }
+    .fsElementHeaderContent { }
+  }
+
+  .fsElementContent { }
+
+}

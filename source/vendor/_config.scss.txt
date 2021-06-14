@@ -1,0 +1,84 @@
+// ================================
+// Colors
+// ================================
+
+$color-1: #0054a4; //blue
+$color-2: #ffad4a; //yellow-orange
+
+$dark-gray: #333333;
+$med-gray: #666666;
+$light-gray: #afafaf;
+
+$background-color:#f5f5f5;
+$background-stroke: #e1e1e1;
+
+$color-black: #000;
+$color-white: #fff;
+
+// Default Color
+$d1: $background-color;
+
+// Main Colors
+$m1: $color-1;
+$m2: $color-2;
+
+$m3: $m1;
+$m4: $m2;
+
+// Shade Colors
+$s1: $med-gray;
+$s2: $light-gray;
+
+// Grays
+
+$g1: $dark-gray;
+$g2: $med-gray;
+$g3: $light-gray;
+
+$g0: $g1;
+$g4: $g2;
+$g5: $g3;
+
+// Reiteration of colors for the style guide
+// Duplicated of preexisting colors entered into a comma separated list
+$colors:
+$d1,
+$m1,
+$m2,
+$m3,
+$m4,
+$g1,
+$g2,
+$g3,
+$g4,
+$g5
+;
+
+
+// ================================
+// Text Properties
+// ================================
+
+// Enter the values found from body copy
+
+$body-font-size: 20px;
+$body-line-height: ( 24 / 20 );
+$body-color: $g2;
+
+// ================================
+// (Basic) Paragraph
+// NOTE: font-size/line-height/color
+// are inherited from the body
+// ================================
+$p-margin: 15px; // Adjusted for CSS line-height/baseline model, 30px in comp
+
+
+// ================================
+// html Styles
+// ================================
+$html-background-color: $background-color;
+
+// ================================
+// Page Content Styles
+// ================================
+$page-content-background-color: $background-color;

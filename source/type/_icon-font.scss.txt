@@ -1,0 +1,84 @@
+// ================================
+// Font Includes
+// ================================
+@font-face {
+  font-family: $font-icon;
+
+  src: url('#{$font-dir}/icomoon/#{$font-icomoon-filename}.eot?#{$boundry}#{$font-icomoon-filename}');
+  src: url('#{$font-dir}/icomoon/#{$font-icomoon-filename}.eot?#iefix?#{$boundry}#{$font-icomoon-filename}') format('embedded-opentype'),
+    url('#{$font-dir}/icomoon/#{$font-icomoon-filename}.woff2?#{$boundry}#{$font-icomoon-filename}') format('woff2'),
+    url('#{$font-dir}/icomoon/#{$font-icomoon-filename}.ttf?#{$boundry}#{$font-icomoon-filename}') format('truetype'),
+    url('#{$font-dir}/icomoon/#{$font-icomoon-filename}.woff?#{$boundry}#{$font-icomoon-filename}') format('woff'),
+    url('#{$font-dir}/icomoon/#{$font-icomoon-filename}.svg?#{$boundry}##{$font-icomoon-filename}') format('svg');
+  font-weight: 400;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  font-family: $font-icon;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// ================================
+// Icon Classes
+// ================================
+.icon-plus:before { content: $glyph-plus; }
+.icon-minus:before { content: $glyph-minus; }
+.icon-close:before { content: $glyph-close; }
+.icon-chevron-left:before { content: $glyph-chevron-left; }
+.icon-chevron-right:before { content: $glyph-chevron-right; }
+.icon-chevron-up:before { content: $glyph-chevron-up; }
+.icon-chevron-down:before { content: $glyph-chevron-down; }
+.icon-angle-left:before { content: $glyph-angle-left; }
+.icon-angle-right:before { content: $glyph-angle-right; }
+.icon-angle-up:before { content: $glyph-angle-up; }
+.icon-angle-down:before { content: $glyph-angle-down; }
+.icon-facebook:before { content: $glyph-facebook; }
+.icon-twitter:before { content: $glyph-twitter; }
+.icon-linkedin:before { content: $glyph-linkedin; }
+.icon-youtube-play:before { content: $glyph-youtube-play; }
+.icon-feed:before { content: $glyph-feed; }
+.icon-google-plus:before { content: $glyph-google-plus; }
+.icon-instagram:before { content: $glyph-instagram; }
+.icon-search:before { content: $glyph-search; }
+.icon-bars:before { content: $glyph-bars; }
+.icon-spinner:before { content: $glyph-spinner; }
+
+
+
+.icon-flickr:before { content: $glyph-flickr; }
+.icon-mobile2:before { content: $glyph-mobile; }
+.icon-minus:before { content: $glyph-minus; }
+.icon-plus:before { content: $glyph-plus; }
+.icon-search:before { content: $glyph-search; }
+.icon-clock-o:before { content: $glyph-clock; }
+.icon-map-marker:before { content: $glyph-marker; }
+.icon-chevron-left:before { content: $glyph-chevron-left; }
+.icon-chevron-right:before { content: $glyph-chevron-right; }
+.icon-chevron-down:before { content: $glyph-chevron-down; }
+.icon-twitter:before { content: $glyph-twitter; }
+.icon-facebook:before { content: $glyph-facebook; }
+.icon-facebook-f:before { content: $glyph-facebook-f; }
+.icon-google-plus:before { content: $glyph-google-plus; }
+.icon-angle-left:before { content: $glyph-angle-left; }
+.icon-angle-right:before { content: $glyph-angle-right; }
+.icon-mobile:before { content: $glyph-mobile; }
+.icon-mobile-phone:before { content: $glyph-mobile-phone; }
+.icon-youtube:before { content: $glyph-youtube; }
+.icon-instagram:before { content: $glyph-instagram; }
+.icon-long-arrow-right:before { content: $glyph-long-arrow; }
+.icon-pinterest-p:before { content: $glyph-pinterest; }
+.icon-vimeo:before { content: $glyph-vimeo; }
+
+
+
+

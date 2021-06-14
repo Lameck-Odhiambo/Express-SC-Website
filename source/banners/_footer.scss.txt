@@ -1,0 +1,353 @@
+$footer-custom-breakpoint: $bp-big;
+#fsFooter {
+
+//  @include dev-color();
+  padding: $gutter;
+  padding-bottom: ( $gutter * 1.5 );
+  background:$g1;
+  //padding-top: ($gutter * 0.5);
+  &>.fsBanner {
+
+    text-align: center;
+    color: $color-white;
+    color: returnRGBA( $color-white, 0.6 );
+    font-size: 14px;
+    line-height: ( 24 / 14 );
+
+    //@include margin-x( $gutter * -0.5 );
+
+    @include breakpoint($bp-portrait) {
+      @include compartment( 700px );
+    }
+
+    @include breakpoint($bp-landscape) {
+      @include compartment( 940px );
+    }
+
+    @include breakpoint($bp-desktop) {
+      @include compartment();
+    }
+
+    header {
+      .fsElementTitle {
+        //@extend %h3;
+        color: rgba($color-white,0.9);
+        font-weight: bold;
+        font-size:17px;
+        text-transform: uppercase;
+        font-family: $sans-serif;
+        font-style: normal;
+        margin-bottom: 10px;
+
+        @include breakpoint($bp-desktop) {
+          text-align: left;
+        }
+      }
+      .fsElementHeaderContent { }
+    }
+
+    a {
+      color: $color-white;
+      color: returnRGBA( $color-white, 0.6 );
+      &:hover {
+        color: $color-white;
+      }
+    }
+
+    &> .fsElement {
+    }
+
+  }
+
+}
+
+// ====================
+// Contact
+
+#fsFooter .contact {
+  //@include dev-color( #f0d );
+  @include margin-y( $gutter );
+
+
+  text-align: left;
+
+
+
+
+  @include breakpoint($footer-custom-breakpoint) {
+    @include inline-element();
+    width: percentage(1 / 2);
+  }
+
+  &> header {
+    .fsElementTitle { }
+    .fsElementHeaderContent { }
+  }
+
+  .fsElementContent {
+    @include breakpoint($bp-desktop) {
+      text-align: left;
+    }
+  }
+
+  [itemprop='name'] {
+    display: block;
+  }
+
+  [itemprop='address'] {
+    display: block;
+    font-size: 15px;
+    color:rgba($color-white,0.9);
+    margin-bottom: 10px;
+  }
+
+  [itemprop='streetAddress'] {
+    display: block;
+
+    @include breakpoint( $bp-phablet ) {
+      display: inline-block;
+      &:after { content: ','; }
+    }
+
+  }
+
+  [itemprop='addressLocality'] {}
+
+  [itemprop='addressRegion'] {}
+
+  [itemprop='postalCode'] {}
+
+  [itemprop='telephone'] {
+    margin-right: 0.75em;
+    &:before {
+      @include font-icon( $glyph-mobile );
+      display: inline-block;
+      color:$g3;
+      font-size: 22px;
+      line-height: 1;
+      vertical-align: top;
+      padding-right: 8px;
+      margin-top: 2px;
+    }
+  }
+  [itemprop='telephone'],
+  [itemprop='fax'] {
+    text-transform: uppercase;
+    font-size: 15px;
+    color:rgba($color-white,0.9);
+  }
+
+  [itemprop='address'],
+  [itemprop='telephone'] {
+
+  }
+
+
+}
+
+// ====================
+// Footer-links
+
+#fsFooter .footer-links {
+  //@include dev-color( #fd0 );
+  //@include margin-y( $gutter * 1.5 );
+  @include list-reset();
+
+  @include breakpoint($footer-custom-breakpoint) {
+    padding-left: 50%;
+    position: relative;
+  }
+
+  @include breakpoint($bp-landscape) {
+    @include inline-element();
+    width: percentage(1 / 1);
+  }
+
+  @include breakpoint($bp-desktop) {
+    width: percentage(1 / 1);
+  }
+
+  border-top:1px solid rgba($color-white, 0.2);
+  padding-top: 18px;
+  //padding-bottom: 20px;
+
+  &> header {
+    .fsElementTitle { }
+    .fsElementHeaderContent { }
+  }
+
+  .fsElementContent {
+    //@include dev-color();
+
+    overflow: hidden;
+
+    nav {
+      text-align: center;
+
+      @include breakpoint($bp-landscape) {
+        //@include margin-x( $gutter * -0.5 );
+      }
+
+      @include breakpoint($bp-desktop) {
+        //@include margin-x( 0 );
+        //text-align: left;
+      }
+    }
+
+    ul.fsNavLevel1 {
+      margin-top: 0;
+      text-align: left;
+
+      @include breakpoint($footer-custom-breakpoint) {
+        text-align: right;
+      }
+
+
+      @include breakpoint($bp-landscape) {
+        //@include margin-x( $gutter * 0.5 );
+        //display: block;
+        //vertical-align: top;
+        //text-align: left;
+      }
+      @include breakpoint($bp-desktop) {
+        //@include margin-x( 0 );
+        //margin-left: ( $gutter * 2 );
+        //text-align: right;
+        //display: block;
+        //&:first-child {
+        //  margin-left: 0;
+        //}
+      }
+
+      &> li {
+        display: inline-block;
+        vertical-align: middle;
+        padding-left:20px;
+
+        &:first-child {
+          padding-left: 0;
+        }
+
+        &> a {
+          color:rgba($color-white,0.6);
+          font-size:14px;
+          font-family: $sans-serif;
+        }
+      }
+
+    }
+  }
+
+}
+
+// ====================
+// Social
+
+#fsFooter .social {
+  //@include dev-color( #0df );
+  @include margin-y( $gutter );
+
+  @include breakpoint($footer-custom-breakpoint) {
+    @include inline-element();
+    width: percentage(1 / 2);
+  }
+
+  @include breakpoint($bp-desktop) {
+    width: percentage(1 / 2);
+  }
+
+  &> header {
+    .fsElementTitle { }
+    .fsElementHeaderContent { }
+  }
+
+  .fsElementContent {
+
+    ul.fsNavLevel1 {
+      text-align: left;
+      @include breakpoint($bp-big) {
+        text-align: right;
+      }
+      /*@include breakpoint($bp-desktop) {
+        text-align: right;
+      }*/
+
+      &> .break {
+        display: block;
+        width: 0;
+        height: 0;
+        overflow: hidden;
+        text-indent: 999em;
+        white-space: nowrap;
+        padding: 0;
+        margin: 0;
+
+        @include breakpoint($bp-portrait) {
+          display: none;
+        }
+      }
+    }
+
+    a {
+      //@include background-color-alpha( $color-white, 0.6 );
+      border:1px solid rgba($color-white,0.9);
+      &:after {
+        color: $g3;
+      }
+
+      &:hover {
+        background-color: transparent; //$color-white;
+      }
+    }
+  }
+
+}
+
+// ====================
+// Super Secret
+// Hidden Breadcrumb
+
+#fsFooter .navigation.hierarchy { display: none; }
+
+
+// ====================
+// Powered By FinalSite
+
+#fsFooter .powered-by-finalsite {
+  // a JS generated container
+  //@include dev-color();
+  margin-top: $gutter;
+  text-align: left;
+
+  @include breakpoint($footer-custom-breakpoint) {
+    margin-top: 0;
+    position:absolute;
+    top: 50%;
+    left: 0;
+    z-index: 1;
+
+    -webkit-transform: tranlsateY(-50%);
+    -moz-transform: tranlsateY(-50%);
+    -ms-transform: tranlsateY(-50%);
+    -o-transform: tranlsateY(-50%);
+    transform: tranlsateY(-50%);
+  }
+
+  //@include breakpoint( $footer-custom-breakpoint ) {
+  //}
+
+  &> .inner {
+    display: inline-block;
+  }
+
+  #fsPoweredByFinalsite {
+    display: block;
+    float: left;
+  }
+
+}
+
+#fsPoweredByFinalsite {
+    //float: left;
+    //margin-top: 5px;
+  }

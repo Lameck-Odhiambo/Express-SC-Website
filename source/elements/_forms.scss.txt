@@ -1,0 +1,121 @@
+.fsComposerFormEmbed {
+  background-color: $color-white !important;
+  form {
+    overflow: hidden;
+
+    .subGroup {
+      margin-bottom: 20px;
+    }
+
+    .mainGroupSub {
+      width: auto !important;
+    }
+
+    .submitBtn {
+      //have to manually reset some of these
+      color: $buttons-color !important;
+      background-color: $buttons-background-color !important;
+      text-shadow: none !important;
+      border: $buttons-border-width $buttons-border-style $buttons-border-color !important;
+
+
+      &:hover {
+        color: $buttons-background-color !important;
+        background-color: $buttons-background-color-hover !important;
+        border-color: $buttons-background-color !important;
+      }
+    }
+
+  }
+}
+
+
+
+/*--Forms--*/
+
+.fsLogin {
+  p {
+    display: block;
+    clear: both;
+    margin-bottom: 5px;
+  }
+
+
+  .fsLoginMainView, .fsLoginForgotView, .fsLoginNewView {
+    @include clear;
+
+    h3 {margin-bottom: 20px;}
+
+    span {
+      display: block;
+      font-weight: inherit;
+      text-transform: uppercase;
+      font-size: inherit;
+    }
+
+    input {
+      margin-bottom: 20px;
+      border: 1px solid inherit;
+      font-size: inherit;
+      padding: 2px 5px;
+      height: 25px;
+      display: block;
+      clear: both;
+
+      &:focus {
+        border: 1px solid inherit;
+        outline: none;
+      }
+    }
+
+    .fsLoginSubmit, button {
+      background-color: inherit;
+      color: inherit;
+      font-size: inherit;
+      font-weight: inherit;
+      border: 0 none;
+      outline: none;
+      padding: 5px 10px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      transition: all 100ms linear;
+      height: 25px;
+      line-height: 1;
+      display: block;
+      float: left;
+      margin-right: 20px;
+
+      &:hover {
+        background-color: inherit;
+        color: inherit;
+      }
+    }
+  }
+
+
+  .fsLoginForgotPasswordLink {
+    margin-top: -2px;
+    line-height: 1;
+
+    a {font-size: inherit;}
+  }
+
+
+  .fsLoginNewAccountLink {
+    line-height: 1;
+
+    a {font-size: inherit;}
+  }
+
+
+  .fsLoginNewCaptcha {
+    display: block;
+    margin-bottom: 20px;
+
+    #recaptcha_area, #recaptcha_table {
+      width: 100% !important;
+      max-width: 318px;
+    }
+  }
+
+}

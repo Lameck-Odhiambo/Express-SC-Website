@@ -1,0 +1,30 @@
+#fsBannerLeft {
+
+  //@include dev-color();
+
+  &> .fsBanner {
+
+    // The trick? Collapse the Tier Nav, hide everything else in #fsBannerLeft at < Portrait view
+    & > *:not( .fsNavigation ) {
+      display: none;
+
+      @include breakpoint($bp-portrait) {
+        display: inherit;
+      }
+    }
+  }
+
+}
+
+#fsBannerLeft > .thing {
+
+  &> header {
+    .fsElementTitle { }
+    .fsElementHeaderContent { }
+  }
+
+  .fsElementContent {
+    @include breakpoint($bp-landscape) { }
+  }
+
+}

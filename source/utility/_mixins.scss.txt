@@ -1,0 +1,1020 @@
+// ================================
+// Modernizr
+// ================================
+
+//www.sitepoint.com/scaling-values-across-breakpoints-using-sass/
+
+// Modernizr fallbacks
+// ================================
+
+// Modernizr mixin to create .modernizr selector:
+// codepen.io/sturobson/pen/xcdha
+
+// Example usage:
+// .selector {
+//   @include modernizr(cssanimations) {
+//     left: 40em;
+//   }
+//   @include modernizr(cssanimations, false) {
+//     background: red;
+//   }
+// }
+
+@mixin modernizr($property, $support: true) {
+
+  @if $support == true {
+
+    .#{$property} & {
+
+      @content;
+
+    }
+
+  }
+
+  @else {
+
+    .no-#{$property} & {
+
+      @content;
+
+    }
+
+  }
+
+}
+
+
+// ================================
+// Compartment
+// ================================
+
+// Example usage:
+// .sectioned-container {
+//   @include compartment;
+// }
+
+@mixin compartment($value: $boundry * 1px) {
+  position: relative;
+  margin: 0 auto;
+  max-width: $value;
+}
+
+
+// ================================
+// Common Columns
+// ================================
+
+@mixin layout-column($importance: false) {
+  float: none;
+  margin-bottom: $gutter;
+
+  @if $importance {
+    width: 100% !important;
+  }
+  @else {
+    width: 100%;
+  }
+
+  @include breakpoint($bp-create-columns) {
+    float: left;
+  }
+
+}
+
+
+// ================================
+// Breakpoint
+// ================================
+
+// http://jakearchibald.github.io/sass-ie/
+
+// Example Usage:
+// .element {
+//   @include breakpoint($bp-medium) {}
+// }
+
+@mixin breakpoint($flex-pivot) {
+
+  @if $legacy-browser {
+
+    @content;
+
+  }
+  @else {
+
+    @media (min-width: $flex-pivot) {
+      @content;
+    }
+
+  }
+
+}
+
+// ================================
+// Common Button
+// ================================
+@mixin default-button-type(){
+  font-family: $sans-serif;
+  font-weight: $buttons-weight;
+  text-transform: uppercase;
+  font-size: $buttons-size;
+  line-height: $buttons-line-height;
+}
+
+@mixin button($background: $d1, $hover-background: $g2, $color: $color-white, $hover-color: $color-black) {
+  @include default-button-type();
+  border: 0;
+  margin: 0 0 $gutter;
+  padding: $buttons-header-vertical-padding $buttons-header-horizontal-padding;
+  background: $background;
+  color: $color;
+  outline: 0;
+  text-align: center;
+
+  &:hover {
+    background-color: $hover-background;
+    color: $hover-color;
+  }
+
+
+}
+
+@mixin button-callout($background: $d1, $hover-background: $g2, $color: $color-white, $hover-color: $color-black){
+  @include button($background, $hover-background, $color, $hover-color);
+  border-radius:5px;
+
+  padding: $buttons-callout-header-vertical-padding $buttons-callout-header-horizontal-padding;
+  letter-spacing: normal;
+  font-size: ce( $buttons-callout-size );
+  line-height: $buttons-callout-line-height;
+}
+
+
+// ================================
+// Button Reset
+// ================================
+
+// Example usage:
+// .trigger {
+//   @include button-reset;
+// }
+
+@mixin button-reset($complete: true) {
+  border: 0;
+  background: none;
+  outline: 0;
+
+  @if $complete {
+    margin: 0;
+    padding: 0;
+  }
+
+}
+
+
+// ================================
+// Arrow Button
+// ================================
+
+@mixin arrow-button($color,$opacity,$hover-opacity) {
+  color:$color;
+  text-transform: uppercase;
+  font-weight:bold;
+  font-size:13px;
+  opacity: $opacity;
+  transition: 
+    opacity 0.33s;
+  &:hover {
+    opacity:$hover-opacity;
+  }
+  &:after {
+    font-family: $font-icon;
+    content:$glyph-long-arrow;
+    padding-left: 10px;
+    font-weight: normal;
+  }
+}
+
+
+// ================================
+// Headings
+// ================================
+@mixin default-heading {
+  margin-top: 0;
+  font-family: $sans-serif;
+  font-weight: 700;
+}
+
+@mixin heading( $size: $body-font-size, $line-height: $body-line-height, $margin: $gutter ){
+  font-size: ce( $size );
+  line-height: (  su( $line-height ) /  su( $size ) );
+  // opting for unitless line height https://css-tricks.com/almanac/properties/l/line-height/
+  margin-bottom: $margin;
+}
+
+@mixin accordion-heading(){
+  @include transition();
+  margin-bottom: 0;
+  display: block;
+  font-size: $accordions-size;
+  line-height: $accordions-line-height;
+  padding: $accordions-vertical-padding $accordions-horizontal-padding;
+  color: $accordions-color;
+  font-family: $sans-serif;
+  font-weight: $accordions-weight;
+}
+
+@mixin shared-banner-block-header(){
+  &> header {
+    border-bottom: 1px solid $background-stroke;
+    padding-top: $gutter - ( ( $h3-line-height - $h3-size ) / 2 );
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    padding-left: 2px;
+    padding-right: 2px;
+    .fsElementTitle {
+      @extend %h3;
+      //@include margin-y( $gutter - ( ( ( ( $h3-size / 1px ) * $h3-line-height ) - ( ( $h3-size / 1px ) ) ) / 2 ) );
+      margin-bottom: $gutter - ( ( $h3-line-height - $h3-size ) / 2 );
+      display: inline;
+    }
+    .fsElementHeaderContent {
+      display: inline;
+      float: right;
+      a {
+        @include arrow-button($g2,0.5,1);
+      }
+    }
+  }
+}
+
+// ================================
+// Font Icons
+// ================================
+
+// Example usage:
+// .label:before {
+//   @include font-icon('\f0d2');
+// }
+
+@mixin font-icon($glyph) {
+  @extend %font-icon;
+  content: $glyph;
+}
+
+
+// ================================
+// Margin & Padding
+// ================================
+@mixin margin-x($length: $gutter) {
+  margin-right: $length;
+  margin-left: $length;
+}
+
+@mixin margin-y($length: $gutter) {
+  margin-top: $length;
+  margin-bottom: $length;
+}
+
+@mixin padding-x($length: $gutter) {
+  padding-right: $length;
+  padding-left: $length;
+}
+
+@mixin padding-y($length: $gutter) {
+  padding-top: $length;
+  padding-bottom: $length;
+}
+
+// ================================
+// Backgrounds
+// ================================
+
+// Example usage:
+// .cover-photo {
+//   @include bg-cover;
+// }
+
+@mixin bg-cover($position: 50% 50%) {
+  background-position: $position;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+// ================================
+// Off Canvas
+// ================================
+
+@mixin off-canvas($direction, $transform-value: 20%) {
+  position: absolute;
+  z-index: $foreground-index;
+  width: 100%;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+  opacity .3s,
+  visibility .3s,
+  transform .3s;
+
+  // From off-left to right
+  @if $direction == ltr {
+    top: 0;
+    left: 0;
+    transform: translate3d($transform-value * -1, 0, 0);
+    transform: translate($transform-value * -1, 0);
+  }
+    // From off-right to left
+  @else if $direction == rtl {
+    top: 0;
+    right: 0;
+    transform: translate3d($transform-value * -1, 0, 0);
+    transform: translate($transform-value * -1, 0);
+  }
+    // From off-top to bottom
+  @else if $direction == ttb {
+    top: 0;
+    left: 0;
+    transform: translate3d(0, $transform-value * -1, 0);
+    transform: translate(0, $transform-value * -1);
+  }
+    // From off-bottom to top
+  @else if $direction == btt {
+    bottom: 0;
+    left: 0;
+    transform: translate3d(0, $transform-value * -1, 0);
+    transform: translate(0, $transform-value * -1);
+  }
+  @else {}
+
+}
+
+@mixin off-canvas-active($default-transform: true) {
+  pointer-events: auto;
+  opacity: 1;
+  visibility: visible;
+
+  @if $default-transform {
+    transform: translate3d(0, 0, 0);
+    transform: translate(0, 0);
+  }
+
+}
+
+// ================================
+// Dropdown
+// ================================
+
+@mixin dropdown($width, $position: center) {
+  position: absolute;
+  top: 99.5%;
+  z-index: 10;
+  display: none;
+  width: $width;
+
+  @if $position == center {
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+  @else {
+    left: 0;
+  }
+
+}
+
+
+// ================================
+// List Reset
+// ================================
+
+// Example usage:
+// nav {
+//   @include list-reset;
+// }
+
+@mixin list-reset {
+
+  ul,
+  ol {
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style: none;
+  }
+
+  li {
+    // margin: 0;
+    // padding: 0;
+  }
+
+  a {
+    display: block;
+  }
+
+}
+
+
+// ================================
+// Clearfix
+// ================================
+
+// Example Usage:
+// .contains-floats {
+//   @include clear;
+// }
+
+@mixin clear {
+  zoom: 1;
+
+  &:after {
+    display: table;
+    clear: both;
+    content: '';
+  }
+
+}
+
+
+// ==========================================================================
+// Developer Tools
+// ==========================================================================
+@mixin dev-color( $border-color: returnRandomColor() ){
+  //background-color: $border-color;//returnRGBA($border-color, 0.4);
+  border: 1px solid $border-color;
+}
+
+// ==========================================================================
+// Transitions
+// ==========================================================================
+@mixin transition($property: all, $duration: $transit-speed){
+  -webkit-transition: $property $duration;
+  -moz-transition: $property $duration;
+  -ms-transition: $property $duration;
+  -o-transition: $property $duration;
+  transition: $property $duration;
+}
+
+
+@mixin background-color-alpha($color,$alpha:0.5){
+  background-color: $color;
+  background-color: returnRGBA($color,$alpha);
+}
+
+@mixin text-color-alpha($color,$alpha:0.5){
+  color: $color;
+  color: returnRGBA($color,$alpha);
+}
+
+// ==========================================================================
+// Animation
+// ==========================================================================
+@mixin animation-spin(){
+  -webkit-animation: animate-spin 2s infinite linear;
+  -o-animation: animate-spin 2s infinite linear;
+  animation: animate-spin 2s infinite linear;
+}
+
+@keyframes animate-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+
+// ==========================================================================
+// No Select
+// ==========================================================================
+@mixin noselect() {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;//really?
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+// ==========================================================================
+// Inline Element
+// ==========================================================================
+@mixin inline-element( $align: top ){
+  display: inline-block;
+  vertical-align: $align;
+  margin-right: -0.22em;
+}
+
+
+// ==========================================================================
+// Header Layout
+// ==========================================================================
+
+// ==========================================================================
+// Header Utilities Links
+// ==========================================================================
+@mixin header-utility-links( ){
+  @include margin-x( 2px );
+  font-size: 15px;// overkill
+  line-height: $body-line-height;// overkill
+  color: $color-white;
+  font-family: $sans-serif;
+  font-weight: 600;
+  text-align: center;
+  opacity:1;
+
+  padding: ( ( 44px - ( $body-font-size * $body-line-height ) ) / 2 ) ($gutter - 2px);
+  //background-color: $header-utility-link-background;
+
+  &:hover {
+    //color: $color-white;
+    opacity: 0.75;
+    //background-color: $m2;
+  }
+}
+
+// ==========================================================================
+// Header Main Navigation Links
+// ==========================================================================
+@mixin header-navigation-links-hover( ){
+  color: $m3;
+  background:$background-color;
+  opacity: 1;
+}
+@mixin header-navigation-links( ){
+  @include margin-x( 0 );
+
+  font-weight: bold;
+  text-align: center;
+  color: $color-white;
+  padding: 20px 25px;
+  background: none;
+  text-transform: uppercase;
+
+  @include breakpoint($bp-desktop) {
+    $local-font-size: 17px;
+    @include padding-y( 20px );
+    font-size: ce($local-font-size);
+  }
+
+  &:hover {
+    border-top-color: $color-white;
+    border-top-color: returnRGBA( $color-white, 0.9 );
+  }
+
+  &:hover,
+  &.active {
+    @include header-navigation-links-hover( );
+  }
+
+}
+@mixin header-navigation-links-active( ){
+  color: $color-white;
+  //font-weight: 700;
+}
+@mixin header-sub-navigation-links( ){
+  @include header-navigation-links( );
+
+  $local-line-height: ( 22 / su( $body-font-size ) );
+  font-size: $body-font-size;
+  line-height: $local-line-height;
+
+  @include padding-x( $gutter );
+  @include padding-y( ( 65px - ( $body-font-size * $local-line-height ) ) / 2 );
+  @include breakpoint($bp-desktop) {
+    $local-font-size: $body-font-size;
+    @include padding-y( ( 65px - ( $local-font-size * $local-line-height ) ) / 2 );
+    font-size: ce($local-font-size);
+  }
+
+}
+
+// ==========================================================================
+// Header Main Navigation Drop-down Links
+// ==========================================================================
+@mixin header-navigation-dropdown-links( ){
+
+  $local-target-link-height: 36px;
+  $local-font-size: 15px;
+  $local-line-height: 18px;
+  $local-computed-vertical-padding: ( ( $local-target-link-height - su($local-line-height) ) / 2 );
+
+  font-size: $local-font-size;
+  line-height: ( su($local-line-height) / su($local-font-size) );// overkill
+  font-weight: 500;
+  text-align: left;
+  color: mix( $color-black, $color-white, 80% );
+  color: rgba($color-black,0.8);
+  padding: $local-computed-vertical-padding ( $gutter * 0.5 );
+
+
+  &:hover {
+    color: rgba($color-black,0.55);
+  }
+
+}
+
+
+
+// ==========================================================================
+// Accordion/Tab Panel
+// ==========================================================================
+@mixin shared-accordion-fsPanel( $is-tab: false ){
+  .fsPanel {
+    margin-bottom: $accordions-vertical-margin;
+
+    &:last-child {
+      border-bottom:$accordions-border-width $accordions-border-style $accordions-border-color;
+      @if $is-tab {
+        @include breakpoint($bp-phablet) {
+          border-bottom:0px;
+        }
+      }
+    }
+
+    > header {
+      @include transition();
+      cursor: pointer;
+      background: $accordions-background-color;
+      border-top: $accordions-border-width $accordions-border-style $accordions-border-color;
+
+      h2 {
+
+        @include accordion-heading();
+
+        &:before { font-family: $font-icon; }
+
+        @if $is-tab {
+          &:before {
+            content: $accordions-icon-open;
+            margin-right: $accordions-icon-offset;
+            color:$m2;
+          }
+        }
+
+      }
+
+      &:hover {
+        background: $accordions-background-color-hover;
+        border-color: $accordions-border-color-hover;
+
+        h2 {
+          color: $accordions-color-hover;
+        }
+      }
+    }//end header
+
+    &>.fsElementContent {
+      //border-bottom: $accordions-border-width $accordions-border-style $accordions-border-color-active;
+      border:0px;
+      padding: 5px 42px 30px;
+
+      @if $is-tab {
+        @include breakpoint($bp-phablet) {
+          border: none;
+          padding: $gutter 0px;
+        }
+      }
+    }
+
+
+    &.fsStateOpen {
+      > header {
+        background: $accordions-background-color-active;
+        border-color: $accordions-border-color-active;
+        border-bottom-color: transparent;
+
+        h2 {
+          color: $accordions-color-active;
+
+          &:before {
+            content: $accordions-icon-close;
+            color:$m2;
+          }
+        }
+      }
+
+      @if $is-tab {
+        >.fsElementContent {
+          display: block;
+        }
+      }
+
+    }
+  }//end accordion content section
+}
+
+// ==========================================================================
+// Content (Blocks, Images…)
+// ==========================================================================
+@mixin content-image-rule(){
+  border-bottom: 5px solid $m4;
+}
+
+@mixin shared-content-block(){
+
+  @include shared-banner-block-header();
+  @include margin-y( $gutter );
+  padding-bottom: $gutter;
+
+  &:first-child {
+    margin-top: 0;
+  }
+  &:last-child {
+    margin-bottom: 0;
+  }
+  img {
+    @include content-image-rule();
+  }
+}
+
+
+// ==========================================================================
+// Calendar, News
+// ==========================================================================
+@mixin shared-calendar-news-block(){
+  @include margin-y( 20px );
+  border-top:1px solid $background-stroke;
+  padding-top: 20px;
+  &:first-child {
+    margin-top: 0;
+    padding-top: 0;
+    border-top:0px;
+  }
+}
+
+@mixin shared-calendar-news-date-style(){
+  margin: 0;
+  padding: 0;
+
+  font-size: 15px;
+  line-height: (19/15);
+  color: $g3;
+  letter-spacing: normal;
+  font-style: normal;
+  font-weight: normal;
+
+}
+
+@mixin shared-calendar-news-title-style(){
+  font-size:18px;
+  line-height:22px;
+  &, a {
+    color: $m2;
+  }
+
+  a:hover {
+    color: $m2;
+  }
+
+}
+
+@mixin shared-calendar-news-text-style(){
+  font-size: 14px;
+  line-height: (20/14);
+  letter-spacing: normal;
+  font-style: normal;
+  font-weight: normal;
+}
+
+@mixin shared-calendar-news-slideshow-buttons(){
+
+  .fsPrevButton,
+  .fsNextButton {
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    top: 50%;
+
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+
+  .fsPrevButton {
+    left: 0;
+  }
+
+  .fsNextButton {
+    right: 0;
+  }
+
+  .fsPrevButton:before,
+  .fsNextButton:before {
+    @include font-icon( $glyph-close );
+    font-size: 48px;
+    line-height: 1;
+    font-weight: 400;
+    text-align: center;
+  }
+
+  .fsPrevButton:hover:before,
+  .fsNextButton:hover:before {
+  }
+
+  .fsPrevButton:before {
+    content: $glyph-angle-left;
+  }
+
+  .fsNextButton:before {
+    content: $glyph-angle-right;
+  }
+
+}
+
+// ==========================================================================
+// Home
+// ==========================================================================
+@mixin shared-home-section-padding(){
+  padding: $home-block-vertical-offset-mobile $gutter 0;//bottom accommodates button(s)
+  @include breakpoint($bp-portrait) {
+    padding-top: $home-block-vertical-offset;
+  }
+}
+
+// ==========================================================================
+// Tier Navigation MAAAADDDDDNESSSSSS
+// ==========================================================================
+@mixin tier-navigation-header-toggle( $breakpoint: $bp-portrait ){
+  @include breakpoint($breakpoint) {
+    display: none;
+  }
+
+  background-color: $navigation-tier-toggle-background-color;
+  padding: $navigation-tier-toggle-vertical-margin $navigation-tier-toggle-horizontal-margin;
+  cursor: pointer;
+  text-align: center;
+
+  color: $navigation-tier-toggle-color;
+  font-family: $navigation-tier-toggle-font-family;
+  font-size: $navigation-tier-toggle-size;
+  line-height: $navigation-tier-toggle-line-height;
+  font-weight: $navigation-tier-toggle-weight;
+  text-transform: uppercase;
+
+  position: relative;
+  &:after {
+    @include font-icon( $glyph-chevron-right );
+    padding: 0 $gutter;
+    position: absolute;
+    top: 50%;
+    right: 0;
+
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+
+}
+
+@mixin tier-navigation-current-list(){
+  &> li {
+
+  }
+  &> li > a {
+    @include tier-navigation-link-parent();
+  }
+}
+
+@mixin tier-navigation-expanded-list(){
+  margin: 0 ( $navigation-tier-horizontal-padding * 0.5 ) ( $navigation-tier-horizontal-padding * 0.5 ); //0px;
+  &> li {
+    margin: 0;
+  }
+  &> li > a {
+    @include tier-navigation-link-child();
+  }
+}
+
+@mixin tier-navigation-link-parent(){
+  display: block;
+  padding: $navigation-tier-vertical-padding $navigation-tier-horizontal-padding;
+  font-size: ce( $navigation-tier-size) ;
+  line-height: $navigation-tier-line-height;
+  //font-family: $navigation-tier-font-family;
+  //letter-spacing: normal;
+  //font-weight: $navigation-tier-weight;
+
+  color: $navigation-tier-color;
+  background-color: $navigation-tier-background-color;
+
+  &:hover {
+    color: $navigation-tier-color-hover;
+    background-color: $navigation-tier-background-color-hover;
+  }
+
+}
+
+@mixin tier-navigation-link-child(){
+  @include tier-navigation-link-parent();
+  @include padding-y( $navigation-tier-vertical-padding * 0.357 );
+  //padding: ( $navigation-tier-vertical-padding ) ( $navigation-tier-horizontal-padding * 1.5 );
+  font-size: ce( $navigation-tier-size * 0.875 ) ;
+  line-height: ( 20px / ( $navigation-tier-size * 0.875 ) );
+}
+
+
+// ==========================================================================
+// News Grid Shenanigans
+// ==========================================================================
+
+@mixin news-grid-2-col(){
+
+  &:nth-child(3n-1){ margin: auto; }
+  &:nth-child(3n+1){ clear: none; }
+
+  &:nth-child(4n-2){ margin: auto; }
+  &:nth-child(4n-1){ margin: auto; }
+  &:nth-child(4n+1){ clear: none; }
+
+  &:nth-child(5n-3){ margin: auto; }
+  &:nth-child(5n-2){ margin: auto; }
+  &:nth-child(5n-1){ margin: auto; }
+  &:nth-child(5n+1){ clear: none; }
+
+  width: 49%;
+  &:nth-child(odd){ margin-right: 1%; }
+  &:nth-child(even){ margin-left: 1%; }
+  &:nth-child(2n+1){ clear: both; }
+}
+@mixin news-grid-3-col(){
+
+  &:nth-child(odd){ margin-right: auto; }
+  &:nth-child(even){ margin-left: auto; }
+  &:nth-child(2n+1){ clear: none; }
+
+  &:nth-child(4n-2){ margin: auto; }
+  &:nth-child(4n-1){ margin: auto; }
+  &:nth-child(4n+1){ clear: none; }
+
+  &:nth-child(5n-3){ margin: auto; }
+  &:nth-child(5n-2){ margin: auto; }
+  &:nth-child(5n-1){ margin: auto; }
+  &:nth-child(5n+1){ clear: none; }
+
+  width: 32%;
+  &:nth-child(3n-1){ margin: 0 2%; }
+  &:nth-child(3n+1){ clear: both; }
+
+}
+@mixin news-grid-4-col(){
+
+  &:nth-child(odd){ margin-right: auto; }
+  &:nth-child(even){ margin-left: auto; }
+  &:nth-child(2n+1){ clear: none; }
+
+  &:nth-child(3n-1){ margin: auto; }
+  &:nth-child(3n+1){ clear: none; }
+
+  &:nth-child(5n-3){ margin: auto; }
+  &:nth-child(5n-2){ margin: auto; }
+  &:nth-child(5n-1){ margin: auto; }
+  &:nth-child(5n+1){ clear: none; }
+
+  width: 23.5%;
+  &:nth-child(4n-2){ margin: 0 1% 0 2%; }
+  &:nth-child(4n-1){ margin: 0 2% 0 1%; }
+  &:nth-child(4n+1){ clear: both; }
+
+}
+@mixin news-grid-5-col(){
+
+  &:nth-child(odd){ margin-right: auto; }
+  &:nth-child(even){ margin-left: auto; }
+  &:nth-child(2n+1){ clear: none; }
+
+  &:nth-child(3n-1){ margin: auto; }
+  &:nth-child(3n+1){ clear: none; }
+
+  &:nth-child(4n-2){ margin: auto; }
+  &:nth-child(4n-1){ margin: auto; }
+  &:nth-child(4n+1){ clear: none; }
+
+  width: 18.4%;
+  &:nth-child(5n-3){ margin: 0 1% 0 2%; }
+  &:nth-child(5n-2){ margin: 0 1%; }
+  &:nth-child(5n-1){ margin: 0 2% 0 1%; }
+  &:nth-child(5n+1){ clear: both; }
+}
+
+// ==========================================================================
+// Calendar Icons
+// ==========================================================================
+@mixin shared-calendar-icon-styles(){
+  @include font-icon($glyph-close);
+  display: inline-block;
+  vertical-align: top;
+  font-size: 16px;
+  margin-top: 2px;
+  color: g2;
+
+  .home & {
+    color: mix( $m2, $color-white, 50% );
+    color: returnRGBA( $color-white, 0.5 );
+  }
+}

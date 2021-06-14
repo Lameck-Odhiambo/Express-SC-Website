@@ -1,0 +1,169 @@
+// ================================
+// List
+// ================================
+
+.fsNews {
+  @include shared-content-block();
+  overflow: hidden;
+
+
+  article {
+
+    @include shared-calendar-news-block();
+
+  }
+
+  .fsThumbnail {
+    display: block;
+    margin-bottom: 5px;
+    max-width: 300px!important;
+
+    img {
+      display: block;
+    }
+
+  }
+
+  .fsTitle {
+    @include shared-calendar-news-title-style();
+    margin-top: 10px;
+  }
+
+  .fsAuthor {}
+
+  .fsDate {
+    @include shared-calendar-news-date-style();
+    //color: $d1;
+    .fsMonth {
+      padding-right:3px;
+    }
+    &:before {
+      content: 'Posted on ';
+    }
+  }
+
+  .fsSummary {
+    @include shared-calendar-news-text-style();
+    :first-child {
+      margin-top: 0;
+    }
+  }
+
+  /*Slideshow*/
+  &.fsSlideshow {
+
+    .fsElementContent {margin: 0;}
+
+    article {
+      padding: $gutter;
+
+    }
+
+    .fsPrevButton, .fsNextButton {
+
+
+      &:before {
+
+      }
+    }
+
+    .fsPrevButton {
+      &:before {}
+    }
+
+    .fsNextButton {
+      &:before {}
+    }
+
+    .fsPager {
+      span {
+        color: inherit;
+        opacity: 0.5;
+        transition: color 100ms,
+        opacity 100ms;
+
+        &.fsStateActive {
+          color: inherit;
+          opacity: 1;
+        }
+      }
+    }
+
+  }
+
+  // ================================
+  // Grid
+  // ================================
+  &.fsGrid {
+    .fsAlertsIcon, .fsRSSIcon {
+
+    }
+
+    .fsNewsGrid {
+      @include clear;
+    }
+
+    article {
+      clear: none;
+      margin-bottom: $gutter !important;
+      margin-top: 0 !important;
+      padding: 0;
+      width: auto;
+    }
+
+    .fsStyleTwoColumns {
+      article {
+        @include breakpoint($bp-portrait) {
+          @include news-grid-2-col();
+        }
+      }
+    }
+    .fsStyleThreeColumns {
+      article {
+        @include breakpoint($bp-portrait) {
+          @include news-grid-2-col();
+        }
+        @include breakpoint($bp-landscape) {
+          @include news-grid-3-col();
+        }
+      }
+    }
+    .fsStyleFourColumns {
+      article {
+        @include breakpoint($bp-portrait) {
+          @include news-grid-2-col();
+        }
+        @include breakpoint($bp-landscape) {
+          @include news-grid-4-col();
+        }
+      }
+    }
+    .fsStyleFiveColumns {
+      article {
+        @include breakpoint($bp-portrait) {
+          @include news-grid-2-col();
+        }
+        @include breakpoint($bp-landscape) {
+          @include news-grid-5-col();
+        }
+      }
+    }
+
+    .fsThumbnail {
+      display: block;
+      float: none;
+      width: 100%;
+      margin: 0 0 15px 0;
+      max-width: inherit;
+    }
+
+  }
+
+}
+
+// ================================
+// News Slideshow Controls
+// ================================
+.fsNews {
+  @include shared-calendar-news-slideshow-buttons();
+}

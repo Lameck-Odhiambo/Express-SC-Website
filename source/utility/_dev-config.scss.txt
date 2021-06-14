@@ -1,0 +1,509 @@
+// ================================
+// Asset Paths
+// ================================
+
+// Example Usage:
+// background-image: url($image-dir + 'logo.svg');
+
+$layout-dir: '/uploaded/themes/avon/';
+$image-dir: $layout-dir + 'images/';
+$font-dir: $layout-dir + 'fonts/';
+
+
+// ================================
+// Columns
+// ================================
+
+$boundry: 1180;
+$gutter: 20px;
+
+// Left Banner, Right Banner padding
+$lb-padding-right: 40px;
+$rb-padding-left: 80px;
+
+// Left Banner, Right Banner width
+$lb-width: percentage( ( 240 + ( $lb-padding-right / 1px ) ) / $boundry );
+$rb-width: percentage( ( 300 + ( $rb-padding-left / 1px ) ) / $boundry );
+
+
+// ================================
+// Breakpoints
+// ================================
+
+// Example usage:
+// @include breakpoint($bp-medium) {}
+
+$bp-micro: 300px;
+$bp-tiny: 400px;
+$bp-small: 500px;
+$bp-medium: 600px;
+$bp-big: 700px;
+$bp-large: 800px;
+$bp-huge: 900px;
+$bp-boundry: $boundry * 1px;
+$bp-boundry-plus: ($boundry + ($gutter * 2)) * 1px;
+$bp-titan: 1000px;
+$bp-world: 1100px;
+$bp-solar: 1200px;
+$bp-galaxy: 1300px;
+$bp-universe: 1400px;
+
+// Device Breakpoints
+// Assumes Mobile First
+$bp-phablet: $bp-medium;//600
+$bp-portrait: $bp-large;//800
+$bp-landscape: 1025px;//iPad landscape
+$bp-desktop: $bp-boundry;//1180
+
+$legacy-browser: false !default;
+
+
+// ================================
+// Situational Flexpoints
+// ================================
+
+$bp-create-columns: $bp-portrait;//700px;
+$bp-main-nav-inline: $bp-landscape;//900px;
+$bp-show-main-dropdowns: $bp-landscape;
+$bp-hide-off-canvas: $bp-landscape;//900px;
+
+// All Column flexpoints *must* be above $bp-create-columns flexpoint
+$bp-2-column: $bp-landscape;//$bp-portrait;//700px;
+$bp-3-column: $bp-landscape;//900px;
+$bp-2-2-column: $bp-portrait;//700px;
+$bp-4-column: $bp-desktop;//1000px;
+$bp-elephant-column: $bp-desktop;//1000px;
+
+
+// ================================
+// Colors
+// ================================
+
+// Specialty Colors
+$placeholder: rgba(#fff, .5);
+
+
+// ================================
+// Font Types
+// ================================
+
+$serif: "myriad-pro", sans-serif;//"freight-text-pro", Times, serif;
+$serif-2: null;
+
+$sans-serif: "myriad-pro", sans-serif; //myriad-pro
+$sans-serif-2: null;
+
+$monospace: Menlo, Monaco, Consolas, 'Courier New', monospace;
+
+$font-icon: 'IcoMoon';
+$font-icomoon-filename: 'avon';
+
+// Glyphs
+
+//missing from set!?
+$glyph-angle-down: "\f107";
+$glyph-close: "\f00d";
+$glyph-chevron-up: "\f077";
+$glyph-angle-up: "\f106";
+$glyph-youtube-play: "\f16a";
+$glyph-bars: "\f0c9";
+$glyph-spinner: "\f110";
+
+
+//verified present
+$glyph-flickr: "\e900";
+$glyph-mobile2: "\e901";
+$glyph-minus: "\e902";
+$glyph-plus: "\e903";
+$glyph-search: "\f002";
+$glyph-clock-o: "\f017";
+$glyph-clock: $glyph-clock-o;
+$glyph-map-marker: "\f041";
+$glyph-marker: $glyph-map-marker;
+$glyph-chevron-left: "\f053";
+$glyph-chevron-right: "\f054";
+$glyph-chevron-down: "\f078";
+$glyph-angle-left: "\f104";
+$glyph-angle-right: "\f105";
+$glyph-mobile: "\f10b";
+$glyph-mobile-phone: $glyph-mobile;
+$glyph-long-arrow-right: "\f178";
+$glyph-long-arrow: $glyph-long-arrow-right;
+$glyph-facebook: "\f09a";
+$glyph-facebook-f: $glyph-facebook;
+$glyph-google-plus: "\f0d5";
+$glyph-instagram: "\f16d";
+$glyph-pinterest: "\f231";
+$glyph-pinterest-p: $glyph-pinterest;
+$glyph-twitter: "\f099";
+$glyph-vimeo: "\f27d";
+$glyph-youtube: "\f167";
+$glyph-linkedin: "\f0e1";
+$glyph-feed: "\f09e";
+$glyph-rss: "\f09e";
+$glyph-tumblr: "\f173";
+$glyph-vine: "\f1ca";
+
+
+
+
+// Reiteration of fonts for the style guide
+$fonts:
+$serif,
+$serif-2,
+$sans-serif,
+$sans-serif-2,
+$font-icon,
+$monospace;
+
+// ================================
+// (Basic) Paragraph
+// NOTE: font-size/line-height/color
+// are inherited from the body
+// ================================
+$p-margin: 15px; // Adjusted per Design feedback
+
+// ================================
+// Headings
+// NOTE: the @mixin heading()
+// calculates the heading size as
+// a percentage of the
+// $body-font-size
+// ================================
+
+$h1-size: 48px;
+$h1-line-height: 56px;
+$h1-margin: 30px; // Adjusted for CSS line-height/baseline model, 30px in comp
+$h1-color: $m1;
+
+$h2-size: 30px;
+$h2-line-height: 36px;
+$h2-margin: 20px; // Adjusted for CSS line-height/baseline model, 16px in comp
+$h2-color: $g2;
+
+$h3-size: 24px;
+$h3-line-height: 29px;
+$h3-margin: 20px;
+$h3-color: $g1;
+
+$h4-size: 24px;
+$h4-line-height: 29px;
+$h4-margin: 20px;
+$h4-color: $m1;
+
+$h5-size: 15px;
+$h5-line-height: 17px;
+$h5-margin: 20px;
+$h5-color: $g1;
+
+$h6-size: 13px;
+$h6-line-height: 16px;
+$h6-margin: 10;
+$h6-color: $g3;
+
+// ================================
+// html Styles
+// ================================
+$html-background-color: $color-white;
+
+// ================================
+// Page Content Styles
+// ================================
+$page-content-background-color: $color-white;
+
+// ================================
+// Custom Type Styles
+// ================================
+$lead-in-size: 24px;
+$lead-in-line-height: 29px;
+$lead-in-margin: 20px;
+$lead-in-color: $m2;
+$lead-in-family: $sans-serif;
+
+$blockquote-size: 24px;
+$blockquote-line-height: (29/24);
+$blockquote-color: $m1;
+$blockquote-family: $serif;
+$blockquote-offset: 10px;
+$blockquote-horizontal-margin: 0;
+$blockquote-vertical-margin: 50px;
+
+
+$citation-size: 13px;
+$citation-line-height: 24px;
+$citation-color: $g3;
+$citation-family: $sans-serif;
+$citation-top-offset: 15px;// Adjusted for CSS line-height/baseline model, 8px in comp
+
+$caption-size: $body-font-size * 0.8; // as good a starting point as any
+$caption-line-height: $body-line-height * 0.8; // as good a starting point as any
+$caption-margin: ( $caption-size * $caption-line-height ) / 2; // as good a starting point as any
+$caption-color: lighten( $body-color, 10% );
+
+$callout-size: 24px;
+$callout-line-height: (29/24);
+$callout-color: $g1;
+$callout-family: $sans-serif;
+$callout-background-color: transparent;
+
+// ================================
+// Header
+// ================================
+$header-utility-link-background: none;//mix( $m1, $color-black, 50% );
+$header-miscellaneous-button-width: 45px;
+$header-miscellaneous-button-height: 36px;
+$header-navigation-border-bottom-width: 2px;
+
+
+
+// ================================
+// Header: Sub-navigation
+// ================================
+$sub-navigation-background-color: $m2;
+
+
+// ================================
+// Home
+// ================================
+// Masthead
+
+$home-masthead-horizontal-padding: $gutter;
+$home-masthead-vertical-padding: 1px;
+
+$home-masthead-detail-color: $color-white;
+$home-masthead-detail-copy-family: $serif;
+$home-masthead-detail-copy-size: 36px;
+$home-masthead-detail-copy-line-height: (42/36);
+
+$home-carousel-arrow-dimensions: 40px;
+
+// "Blocks"
+$home-block-vertical-offset-mobile: 40px;
+$home-block-vertical-offset: 60px;
+
+
+
+
+// ================================
+// Elements: Buttons
+// ================================
+$buttons-size: 13px;
+$buttons-line-height: $h5-line-height;
+$buttons-weight: bold;
+$buttons-color: $color-white;
+$buttons-color-hover: $m1;
+$buttons-background-color: $m1;
+$buttons-background-color-hover: $color-white;
+$buttons-header-horizontal-padding: $gutter;
+$buttons-header-vertical-padding: 10.5px;
+
+$buttons-border-width: 1px;
+$buttons-border-style: solid;
+$buttons-border-color: $color-white;
+
+$buttons-callout-size: $buttons-size;
+$buttons-callout-line-height: $buttons-line-height;
+$buttons-callout-weight: $buttons-weight;
+$buttons-callout-color: $buttons-color;
+$buttons-callout-color-hover: $buttons-color-hover;
+$buttons-callout-background-color: $buttons-background-color;
+$buttons-callout-background-color-hover: $buttons-background-color-hover;
+$buttons-callout-header-horizontal-padding: 60px;
+$buttons-callout-header-vertical-padding: 27px;
+
+$buttons-callout-border-width: $buttons-border-width;
+$buttons-callout-border-style: $buttons-border-style;
+$buttons-callout-border-color: $buttons-border-color;
+
+
+// ================================
+// Elements: Tables
+// ================================
+$table-header-background-color: $m1;
+$table-header-color: $color-white;
+$table-header-size: $h4-size;
+$table-header-line-height: $h4-line-height;
+$table-header-horizontal-padding: 20px;
+$table-header-vertical-padding: 10px;
+
+$table-background-color: $background-color;
+$table-background-stripe-color: $color-white;
+
+$table-color: $body-color;
+$table-size: 18px;
+$table-line-height: $body-line-height;
+$table-horizontal-padding: 15px;
+$table-vertical-padding: 12px;
+
+
+$table-border-width: 1px;
+$table-border-style: solid;
+$table-border-color: $background-stroke;
+
+
+
+// ================================
+// Elements: Tabs
+// ================================
+$tabs-background-color: $g3;
+$tabs-background-color-hover: rgba($m2, 0.5);
+$tabs-background-color-active: $m2;
+
+$tabs-color: $color-white;
+$tabs-color-hover: $color-white;
+$tabs-color-active: $color-white;
+
+$tabs-border-width: 0px;
+$tabs-border-style: solid;
+$tabs-border-color: transparent;
+$tabs-border-color-hover: transparent;
+$tabs-border-color-active: transparent;
+
+$tabs-horizontal-margin: 3px;
+//$tabs-vertical-margin: $gutter;
+$tabs-horizontal-padding: 15px;
+$tabs-vertical-padding: 16px;
+$tabs-size: $h5-size;
+$tabs-line-height: $h5-line-height;
+$tabs-weight: bold;
+
+// ================================
+// Elements: Accordions
+// ================================
+$accordions-background-color: $color-white;
+$accordions-background-color-hover: $background-color;
+$accordions-background-color-active: $color-white;
+
+$accordions-color: $g1;
+$accordions-color-hover: $g1;
+$accordions-color-active: $g1;
+
+$accordions-border-width: 1px;
+$accordions-border-style: solid;
+$accordions-border-color: $g3;
+$accordions-border-color-hover: $g3;
+$accordions-border-color-active: $g3;
+
+$accordions-horizontal-margin: $gutter;
+$accordions-vertical-margin: 0px;
+$accordions-horizontal-padding: 15px;
+$accordions-vertical-padding: 10px;
+$accordions-size: $h4-size;
+$accordions-line-height: $h4-line-height;
+$accordions-weight: 400;
+$accordions-icon-open: $glyph-plus;
+$accordions-icon-close: $glyph-minus;
+$accordions-icon-size: 18px;
+$accordions-icon-offset: 40px;
+
+// ================================
+// Elements: News
+// ================================
+
+// ================================
+// Elements: Calendars
+// ================================
+$calendar-floating-date-dimension: 100px;
+$calendar-floating-date-border-width: 5px;
+
+// ================================
+// Elements: Sidebar Content
+// ================================
+
+$sidebar-title-size:$h3-size;
+$sidebar-title-line-height: $h3-line-height;
+$sidebar-title-color: $m1;
+
+$sidebar-background-color: $background-color;
+$sidebar-border-size: 1px;
+$sidebar-border-color: $background-stroke;
+$sidebar-border-top-size: 6px;
+$sidebar-border-top-color: $m2;
+$sidebar-vertical-spacing: 20px;
+$sidebar-horizontal-spacing: 18px;
+$sidebar-border-radius: 4px;
+
+$sidebar-content-size:18px;
+$sidebar-content-line-height:22px;
+
+// ================================
+// Elements: Tier Navigation
+// ================================
+// Tier Toggle
+
+$navigation-tier-toggle-background-color: $m2;
+$navigation-tier-toggle-size: $body-font-size;
+$navigation-tier-toggle-line-height: ( 22px / $body-font-size );
+$navigation-tier-toggle-font-family: $sans-serif;
+$navigation-tier-toggle-weight: 600;
+$navigation-tier-toggle-color: $color-white;
+
+$navigation-tier-toggle-horizontal-margin: $gutter;
+$navigation-tier-toggle-vertical-margin: $gutter;
+
+// Tier Links
+$navigation-tier-background-color: $m2;
+$navigation-tier-background-color-hover: $m2;
+$navigation-tier-background-color-active: $m2;
+
+$navigation-tier-color: $color-white;
+$navigation-tier-color-hover: $m3;
+$navigation-tier-color-active: $m1;
+
+$navigation-tier-border-width: 1px;
+$navigation-tier-border-style: solid;
+$navigation-tier-border-color: transparent;
+$navigation-tier-border-color-hover: transparent;
+$navigation-tier-border-color-active: $g1;
+
+$navigation-tier-horizontal-margin: 0;
+$navigation-tier-vertical-margin: 1px;
+
+$navigation-tier-horizontal-padding: 20px;
+$navigation-tier-vertical-padding: 14px;
+$navigation-tier-size: $body-font-size;
+$navigation-tier-line-height: ( 22px / $navigation-tier-size );
+$navigation-tier-font-family: $sans-serif;
+$navigation-tier-weight: 400;
+
+$navigation-tier-icon-open: $glyph-angle-right;
+$navigation-tier-icon-close: $glyph-angle-down;
+$navigation-tier-icon-size: 24px;
+$navigation-tier-icon-offset: 40px;
+
+$navigation-tier-indent-offset: $gutter;
+
+
+
+
+// ================================
+// Special Site Conditions
+// ================================
+
+// Configure breakpoints to be in ems
+$bp-in-ems: false;
+
+// Elements >> Calendar
+// Determines whether to include floating dates
+$floating-date: true;
+// Determines whether little icons show up next to event details
+$event-icons: true;
+
+// Elements >> Constituent
+// false indicates display: inline-block rather than column-count
+$pinterest-directory: true;
+
+// Elements >> Unique
+// Determines the range at which the hero background image scales
+$hero-flex-height: 30vw;
+$hero-min-height: 280;
+$hero-max-height: 600;
+
+// Elements >> Constituent
+// 'arrow', 'dots', 'plus'
+$nav-sub-icon: 'dots';
+// Decide whether the sub nav has collapse functionality
+$nav-sub-collapses: true;
+
+
+$transit-speed: 0.333s;

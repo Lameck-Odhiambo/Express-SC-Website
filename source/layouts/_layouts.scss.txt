@@ -1,0 +1,316 @@
+// ================================
+// Page Container
+// ================================
+#fsPageWrapper {
+
+}
+
+#fsPageBodyWrapper {
+  @include padding-x;
+  @include padding-y($gutter * 2);
+  background: $page-content-background-color;
+  overflow: hidden;
+  position: relative;
+  z-index: 0;
+
+  .has-tier-navigation & {
+    @include padding-y($gutter * 0);
+
+    @include breakpoint($bp-portrait) {
+      @include padding-y($gutter * 2);
+    }
+  }
+}
+
+#fsPageBody {
+  @include compartment;
+
+  .home & {
+    margin: 0;
+    max-width: none;
+  }
+}
+
+#fsPageContent {}
+
+
+// ================================
+// Common Columns
+// ================================
+$lb-width-list: percentage(1/1), percentage( 220 / 700 ), $lb-width;
+
+#fsBannerLeft {
+  @include layout-column;
+  //display: none;
+  width: auto;
+
+  @include breakpoint($bp-portrait) {
+    padding-right: $lb-padding-right;
+    display: block;
+    width: nth($lb-width-list,2); //$lb-width;
+
+    .fsOverrideLeftBanner & {
+      display: none !important;
+    }
+
+  }
+
+  @include breakpoint($bp-landscape) {
+    width: nth($lb-width-list,3);
+  }
+
+}
+
+.fsBannerLeft {
+  &.mobile {
+    display: block;
+    @include breakpoint($bp-portrait) {
+      display: none;
+    }
+  }
+}
+
+#fsPageContent {
+  @include layout-column(true);
+  margin: 0;
+  .fsHasRightBanner & {
+
+    @include breakpoint($bp-portrait) {
+      width: 100% - $rb-width !important;
+    }
+
+  }
+
+  .fsHasLeftBanner & {
+
+    @include breakpoint($bp-portrait) {
+      width: 100% - nth($lb-width-list,2) !important;
+    }
+
+  }
+
+  .fsHasLeftBanner.fsOverrideLeftBanner & {
+    @include breakpoint($bp-portrait) {
+      width: 100% !important;
+    }
+  }
+
+  .fsHasLeftBanner.fsHasRightBanner & {
+    @include clear();
+
+    @include breakpoint($bp-portrait) {
+      width: 100% - nth($lb-width-list,2) !important;
+    }
+
+    @include breakpoint($bp-landscape) {
+      width: 100% - nth($lb-width-list,3) - $rb-width !important;
+    }
+
+  }
+
+  .fsHasLeftBanner.fsHasRightBanner.fsOverrideLeftBanner & {
+    @include breakpoint($bp-portrait) {
+      .fsOverrideLeftBanner & {
+        width: 100% !important;
+      }
+    }
+  }
+}
+
+#fsBannerRight {
+  @include layout-column;
+  overflow: hidden;
+
+  @include breakpoint($bp-portrait) {
+    padding-left: $rb-padding-left;
+    width: $rb-width;
+  }
+
+  .fsHasLeftBanner & {
+
+    @include breakpoint($bp-portrait) {
+      //background-color: #f00;
+      width: 100% - nth($lb-width-list,2);
+      margin-left: nth($lb-width-list, 2);
+      padding-left: 0;
+
+    }
+
+    @include breakpoint($bp-landscape) {
+      padding-left: $rb-padding-left;
+      width: $rb-width;
+      margin: 0;
+    }
+
+  }
+
+  .fsHasLeftBanner.fsOverrideLeftBanner & {
+    @include breakpoint($bp-portrait) {
+      width: 100% !important;
+      margin-left: 0;
+    }
+  }
+
+}
+
+
+// ================================
+// Common Layout
+// ================================
+
+.fsLayout {
+
+  @include breakpoint($bp-create-columns) {
+    @include margin-x($gutter * -1);
+  }
+
+  .fsDiv {
+    @include layout-column;
+
+    @include breakpoint($bp-create-columns) {
+      @include padding-x;
+    }
+
+  }
+
+}
+
+// ================================
+// 1c
+// ================================
+
+// No Changes
+
+
+// ================================
+// 2c
+// ================================
+
+.fsTwoColumnLayout {
+
+  .fsDiv {
+
+    @include breakpoint($bp-2-column) {
+      width: cp(1, 2);
+    }
+
+  }
+
+}
+
+
+// ================================
+// 3c
+// ================================
+
+.fsThreeColumnLayout {
+
+  .fsDiv {
+
+    @include breakpoint($bp-3-column) {
+      width: cp(1, 3);
+    }
+
+  }
+
+}
+
+
+// ================================
+// 4c
+// ================================
+
+.fsFourColumnLayout {
+
+  .fsDiv {
+
+    @include breakpoint($bp-2-column) {
+      width: cp(1, 2);
+    }
+
+    @include breakpoint($bp-4-column) {
+      width: cp(1, 4);
+    }
+
+  }
+
+}
+
+
+// ================================
+// 2c-1c
+// ================================
+
+// No Changes
+
+
+// ================================
+// 1c-2c
+// ================================
+
+// No Changes
+
+
+// ================================
+// 3c-1c
+// ================================
+
+// No Changes
+
+
+// ================================
+// 1c-3c
+// ================================
+
+// No Changes
+
+
+// ================================
+// 1c-2c-1c
+// ================================
+
+// No Changes
+
+
+// ================================
+// 1c-3c-1c
+// ================================
+
+// No Changes
+
+
+// ================================
+// Elephants
+// ================================
+
+.fsLayout {
+
+  .fsStyleTwoThirds {
+    width: 100%;
+
+    @include breakpoint($bp-elephant-column) {
+      width: cp(2, 3);
+    }
+
+  }
+
+  .fsStyleOneThird {
+    width: 100%;
+
+    @include breakpoint($bp-elephant-column) {
+      width: cp(1, 3);
+    }
+
+  }
+
+}
+
+
+// ================================
+// 1c-2c-1rc
+// ================================
+
+
+// ================================
+// 1lc-1c-2c
+// ================================

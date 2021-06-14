@@ -1,0 +1,93 @@
+// ================================
+// (Landing?) Page Masthead
+// ================================
+.container.masthead {
+  position: relative;
+
+  .fsComposeMode & {
+    display: none;
+  }
+
+  .image {
+    @include transition();
+    display: block;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    padding-bottom: percentage( 230 / 320 );
+
+    @include breakpoint($bp-portrait) {
+      padding-bottom: percentage( 600 / 800 );
+    }
+
+    @include breakpoint($bp-landscape) {
+      padding-bottom: percentage( 750 / 1200 );
+    }
+
+    @include breakpoint($bp-desktop) {
+      padding-bottom: 750px;
+    }
+
+  }
+}
+
+
+// ================================
+// (Landing?) Page Description
+// ================================
+.masthead.container .description {
+  padding: 0 $gutter;
+  background-color: $page-content-background-color;
+  text-align: center;
+
+  @include breakpoint($bp-landscape) {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: transparent;
+  }
+
+  &>.inner {
+    padding: $gutter 0;
+
+    @include breakpoint($bp-landscape) {
+      @include compartment( percentage( 880 / $boundry ) );
+      padding: $gutter;
+      background-color: returnRGBA( $page-content-background-color, 0.7 );
+    }
+
+    @include breakpoint($bp-desktop) {
+      @include compartment( 880px );
+    }
+  }
+
+  h1 { margin-bottom: 0; }
+  p { margin: 0; }
+}
+
+
+
+// ================================
+// Miscellaneous Layout Controls
+// ================================
+#fsPageContent {
+  .fsPageTitle {}
+
+  &> .fsLayout {
+
+    .fsContent.masthead {
+      display: none;
+
+      .fsComposeMode & {
+        display: block;
+      }
+
+    }
+    .fsContent.description {
+      .has-description & { display: none; }
+    }
+
+  }
+}

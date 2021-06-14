@@ -1,0 +1,45 @@
+.fsAccordion {
+  margin-bottom: $gutter;
+
+  @include shared-accordion-fsPanel();
+
+}
+
+//craziness to override application css for icon
+.fsAccordion.fsPanelIconBefore .fsPanel.fsStateOpen>header h2::before,
+.fsAccordion.fsPanelIconAfter .fsPanel.fsStateOpen>header h2::after,
+.fsAccordion.fsPanelIconAfter .fsPanel>header h2::after,
+.fsAccordion.fsPanelIconBefore .fsPanel>header h2::before {
+  @include font-icon( $glyph-close );
+  font-size: $accordions-icon-size;
+  border: none;
+  width: auto;
+  height: auto;
+  position: relative;
+  top: -3px;
+}
+
+.fsAccordion.fsPanelIconBefore .fsPanel.fsStateOpen>header h2::before,
+.fsAccordion.fsPanelIconAfter .fsPanel.fsStateOpen>header h2::after {
+  content: $accordions-icon-close;
+}
+
+.fsAccordion.fsPanelIconAfter .fsPanel>header h2::after,
+.fsAccordion.fsPanelIconBefore .fsPanel>header h2::before {
+  content: $accordions-icon-open;
+}
+
+.fsAccordion.fsPanelIconBefore .fsPanel>header h2::before {
+  margin: -3px 10px 0 0;
+  color:$m2;
+}
+
+.fsAccordion.fsPanelIconAfter .fsPanel>header h2 {
+  &:before {
+    display: none;
+  }
+  &:after {
+    margin: 0 0 0 $gutter;
+    float: right;
+  }
+}

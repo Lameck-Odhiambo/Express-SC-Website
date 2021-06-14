@@ -1,0 +1,212 @@
+/*=======================*/
+/* Search Variables      */
+/*=======================*/
+$search-input-min-width: 140px;
+$input-bg-color: transparent;
+$input-text-color: $color-white;
+$input-font-size: 15px;
+$input-line-height: (24/15);
+$input-font-family: $sans-serif;
+$input-font-style: normal;
+
+$search-height: 40px;
+$submit-font: $font-icon;
+$submit-text: $glyph-search;
+$submit-text-color: $color-white;
+$submit-padding-x: 12.5px;
+$submit-bg-color: transparent;
+$submit-hover-color: $color-white;
+$submit-hover-bg-color: transparent;
+$submit-width: $search-height;//trickssssy
+
+
+
+/*=================================================================*/
+/* Normalize Search                                                */
+/*=================================================================*/
+form.gsc-search-box-tools { //form that holds all the weirdness
+  margin-bottom: 0 !important;
+  overflow: hidden;
+
+  table{ //remove border from all tables
+    border: 0;
+  }
+
+  table,
+  tbody,
+  tr,
+  td{
+    display: block;
+  }
+
+  td.gsc-input{ //why?
+    padding: 0 !important;
+    display: block;
+    float: left;
+  }
+
+  table.gsc-search-box{
+    display: table;
+    margin-bottom: 0;
+    position: relative;
+    //width: auto !important; /////////
+  }
+
+  div.gsc-input-box {
+    min-width: $search-input-min-width;
+    border: 0;
+    height: $search-height;
+
+    &.gsc-input-box-focus {
+      box-shadow: none;
+    }
+    table,
+    tbody,
+    tr,
+    td{
+      overflow: hidden;
+      display: block;
+      width: 100%;
+      border: 0;
+      height: $search-height;
+    }
+
+  }
+
+  td.gsib_a{
+    padding: 0;
+    display: inline-block;
+  }
+
+  td.gsib_b{
+    padding: 0;
+    display: none !important;
+  }
+
+  td.gsc-input {
+    float: none; /////////////
+  }
+
+  input.gsc-input{
+    background: $input-bg-color !important;
+    background-image: none !important;
+    width: 100%;
+    height: $search-height !important;
+    color: $input-text-color;
+    font-size: $input-font-size;
+    line-height: $input-line-height;
+    font-family: $input-font-family;
+    font-style: $input-font-style;
+
+    padding-left: $submit-width !important;
+    padding-right: ( $gutter * 2 ) !important;
+    margin: 0 !important;
+
+    overflow: hidden;
+
+    -webkit-appearance: none;
+  }
+
+  table.gsc-branding{
+    display: none;
+  }
+
+  td.gsc-search-button{
+    @include transition();
+    display: block;
+    //float: left;
+    padding: 0 $submit-padding-x;
+    overflow: hidden;
+    height: $search-height;
+    width: $submit-width;
+    background: $submit-bg-color;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 5;
+    color: $submit-text-color;
+
+    &:after{
+
+      @include font-icon( $glyph-close );
+      content: $submit-text;
+      opacity: 1;
+      font-size: 13px;
+
+      display: block;
+      position: relative;
+      left: 0;
+      right: 0;
+      text-align: center;
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+      -moz-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      -o-transform: translateY(-50%);
+      transform: translateY(-50%);
+    }
+
+  }
+
+  td.gsc-search-button:hover{
+    background: $submit-hover-bg-color;
+    color: $submit-hover-color;
+  }
+
+  input.gsc-search-button{
+    border: 0;
+    height: $search-height;
+    width: 100%;
+    color: transparent;
+    opacity: 0;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+  }
+
+}
+
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+  color: $input-text-color;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  color: $input-text-color;
+  opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+  color: $input-text-color;
+  opacity: 1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: $input-text-color;
+}
+
+
+
+/*=======================*/
+/* Custom Styles         */
+/*=======================*/
+form.gsc-search-box-tools{
+
+  .fsSearch.top-search{ //search container
+
+  }
+
+  div.gsc-input-box{ //search input container
+    background-color: transparent !important;
+
+  }
+
+
+  input.gsc-input{ //search input field
+
+  }
+
+  td.gsc-search-button{ //submit button
+
+  }
+
+}

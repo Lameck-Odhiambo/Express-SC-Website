@@ -1,0 +1,386 @@
+// ================================
+// Caption
+// ================================
+
+.caption {
+
+  //display: none;//temp
+
+  font-size: ce( $caption-size );
+  line-height: $caption-line-height;
+  margin-bottom: ( $caption-size * $caption-line-height ) / 2; // as good a starting point as any
+  color: $caption-color;
+  font-family: $serif;
+  letter-spacing: normal;
+  font-style: normal;
+  font-weight: normal;
+
+}
+
+// ================================
+// Lead In
+// ================================
+.fs_style_26,
+.lead-in {
+
+  font-size: ce($lead-in-size);
+  line-height: su( $lead-in-line-height ) / su( $lead-in-size );
+  margin-bottom: $lead-in-margin;
+  color: $lead-in-color;
+  font-family: $lead-in-family;
+  letter-spacing: normal;
+  font-style: normal;
+  font-weight: normal;
+  font-style:italic;
+
+}
+
+// ================================
+// (Text) Callout
+// ================================
+.fs_style_25,//30
+.callout:not(.button) {
+  display: block;
+  margin: ( $gutter * 2.5 ) 0;
+  background: $callout-background-color;
+  font-size: $callout-size;
+  line-height: $callout-line-height;
+  color: $callout-color;
+  font-family: $callout-family;
+  letter-spacing: normal;
+  font-style: normal;
+  font-weight: normal;
+  border-left: 5px solid $m2;
+  padding-left:20px;
+
+}
+
+// ================================
+// Banner Blocks
+// ================================
+.content-block {
+  @include shared-content-block();
+}
+
+
+// ================================
+// Sidebar Content
+// ================================
+
+.sidebar {
+  @include margin-y( $gutter );
+  border: $sidebar-border-size solid $sidebar-border-color;
+  padding: $sidebar-vertical-spacing $sidebar-horizontal-spacing;
+  border-radius:$sidebar-border-radius;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  .fsElementTitle {
+    font-size:$sidebar-title-size;
+    line-height:$sidebar-title-line-height;
+    color:$sidebar-title-color;
+  }
+
+  .fsElementContent {
+    font-size: $sidebar-content-size;
+    line-height: $sidebar-content-line-height;
+    a {
+      @include arrow-button($m2,1,0.5);
+    }
+
+    :first-child { margin-top: 0; }
+    :last-child { margin-bottom: 0; }
+  }
+
+  &.primary {
+    background: $sidebar-background-color;
+    border-top: $sidebar-border-top-size solid $sidebar-border-top-color;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+
+  &.secondary {
+    background: none;
+  }
+
+  &.tertiary {
+    background: $sidebar-title-color;
+
+    .fsElementTitle {
+      color: $color-white;
+    }
+
+    .fsElementContent {
+      &, a {
+        color: $color-white;
+      }
+    }
+  }
+
+  p {
+    margin-bottom: $gutter;
+  }
+
+
+}
+
+// ================================
+// Extended Buttons
+// ================================
+//.fs_style_25,
+.button, %button {
+  @include default-button-type();
+  @include button($buttons-background-color, $buttons-background-color-hover, $buttons-color, $buttons-color-hover);
+  border: $buttons-border-width $buttons-border-style $buttons-border-color;
+  border-radius:5px;
+  &:hover {
+    border: $buttons-border-width $buttons-border-style $buttons-border-color;
+    opacity: 1;
+  }
+
+  &.top {
+    background-color: transparent;
+    margin-left: 15px;
+    display: none;
+    @include breakpoint($bp-phablet) {
+      display: block;
+    }
+    &:hover {
+      background-color: $color-white;
+    }
+  }
+}
+
+
+// Button with Arrow, Primary
+.button.primary,
+.fs_style_29 {
+  @extend %button;
+  @include padding-x( $buttons-header-horizontal-padding * 0.5 );
+  display: inline-block;
+  border: none;
+  background: transparent;
+  margin-left: $buttons-header-horizontal-padding * -0.5;
+  color: $m2;
+
+  &:after {
+    @include font-icon( $glyph-long-arrow );
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 6px;
+  }
+
+  &:hover {
+    color: mix( $m2, $color-white, 50% );
+  }
+}
+
+// Button with Arrow, Secondary
+.button.secondary,
+.fs_style_30 {
+  @extend %button;
+  @include padding-x( $buttons-header-horizontal-padding * 0.5 );
+  display: inline-block;
+  border: none;
+  background: transparent;
+  margin-left: $buttons-header-horizontal-padding * -0.5;
+  color: $g3;
+
+  &:after {
+    @include font-icon( $glyph-long-arrow );
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 6px;
+  }
+
+  &:hover {
+    color: $g2;
+  }
+}
+
+// Button, Default
+.button.tertiary,
+.fs_style_31,
+.fsComposerFormEmbed .submitBtn {
+  @extend %button;
+  display: inline-block;
+  &:hover {
+    border-color: $buttons-background-color;
+  }
+}
+
+input[type*="button"] {
+  @extend %button;
+  &:hover {
+    border-color: $buttons-background-color;
+  }
+}
+
+
+
+
+
+
+
+// ================================
+// Callout Button
+// ================================
+//.fs_style_26,
+.button.callout, %button-callout {
+  // NOTE: This base-style serves as the ".primary" as well as default
+  @include default-button-type();
+
+  @include button-callout($buttons-background-color, $buttons-background-color-hover, $buttons-color, $buttons-color-hover);
+
+  display: inline-block;
+
+  border: $buttons-callout-border-width $buttons-callout-border-style transparent;
+  font-family: $serif;
+  font-weight: 400;
+  text-transform: none;
+  font-size: 30px;
+  line-height: (36/30);
+
+  -webkit-box-shadow: 0 2px 0 returnRGBA( $color-black, 0.15 );
+  -moz-box-shadow: 0 2px 0 returnRGBA( $color-black, 0.15 );
+  box-shadow: 0 2px 0 returnRGBA( $color-black, 0.15 );
+
+  &:hover {
+    border: $buttons-callout-border-width $buttons-callout-border-style $buttons-background-color;
+    opacity: 1;
+  }
+
+  &:after { content: normal; }//overwriting inherited arrow icon
+
+
+  #fsBannerLeft &,
+  #fsBannerRight & {
+    display: block;
+  }
+
+  /*
+  &.primary {}//inherits all the above
+
+  &.secondary {
+    background-color: $m2;
+
+    &:hover {
+      color: $m2;
+      background-color: $buttons-background-color-hover;
+      border-color: $m2;
+    }
+  }
+  */
+
+}
+
+.button.callout > em,
+.fs_style_32 > .fs_style_34,
+.fs_style_33 > .fs_style_34 {
+  display: block;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  font-family: $sans-serif;
+  font-weight: $buttons-weight;
+  text-transform: uppercase;
+}
+
+// Button Callout, Primary
+.button.callout.primary,
+.fs_style_32 {
+  @extend %button-callout;
+}
+
+// Button Callout, Secondary
+.button.callout.secondary,
+.fs_style_33 {
+  @extend %button-callout;
+  background-color: $m2;
+
+  &:hover {
+    color: $m2;
+    background-color: $buttons-background-color-hover;
+    border-color: $m2;
+  }
+}
+
+
+
+// ================================
+// Content Images
+// ================================
+.fs_style_13, //15;left
+.fs_style_14, //16;right
+.fs_style_22 {
+  display: block;
+  width: 100%;
+
+  border: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+
+  margin: $gutter auto;
+
+  @include breakpoint($bp-portrait) {
+    //width: auto;
+  }
+
+}
+
+.fs_style_13, //left
+.fs_style_14 //right
+ {
+  @include breakpoint($bp-portrait) {
+    width: percentage( 1 / 2 );
+  }
+
+  @include breakpoint($bp-landscape) {
+    width: percentage( 3 / 8 );
+  }
+}
+
+
+//left
+.fs_style_13 {
+
+  @include breakpoint($bp-portrait) {
+    float: left;
+    margin-right: $gutter;
+    margin-left: 0;
+  }
+
+}
+
+//right
+.fs_style_14 {
+  @include breakpoint($bp-portrait) {
+    float: right;
+    margin-right: 0;
+    margin-left: $gutter;
+  }
+}
+
+
+//overlay active
+
+.overlay.active {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    top: 85px;
+    @media (max-width:599px) {
+      top:49px;
+    }
+}
+
+
+
+
+
+
+

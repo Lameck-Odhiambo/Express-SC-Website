@@ -1,0 +1,131 @@
+// Colors
+// ================================
+
+.colors {
+
+  ol {
+    @include clear;
+    margin-bottom: $gutter;
+    padding: 0;
+    list-style: none;
+
+    @mixin colors($color) {
+      background: $color;
+      color: $color;
+    }
+
+
+
+    li {
+      position: relative;
+      float: left;
+      margin-bottom: 2em;
+      height: 4em;
+      width: cp(1, length($colors) / 4 );
+
+      @include breakpoint($bp-medium) {
+        width: cp(1, length($colors) / 3 );
+      }
+
+      @include breakpoint($bp-boundry) {
+        //margin-bottom: 0;
+        width: cp(1, length($colors) / 2 );
+      }
+
+      &:after {
+        position: absolute;
+        width: 100%;
+
+        top: 100%;
+        left: 0;
+        font-size: 12px;
+        line-height: 16px;
+        text-align: center;
+        color: $g3;
+      }
+
+      @each $color-key in $colors {
+
+        $i: index($colors, $color-key);
+
+        &:nth-of-type(#{$i}) {
+          @include colors(nth($colors, $i));
+
+          &:after {
+            content: '#{nth($colors, $i)}';
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+
+}
+
+// Headers
+// ================================
+
+.headers {
+
+  @for $i from 1 through 6 {
+
+    h#{$i} {
+
+      &:after {}
+
+    }
+
+  }
+
+  h1 {
+
+    &:after {
+      content: ' size: #{$h1-size} / line: #{$h1-line-height}';
+    }
+
+  }
+
+  h2 {
+
+    &:after {
+      content: ' size: #{$h2-size} / line: #{$h2-line-height}';
+    }
+
+  }
+
+  h3 {
+
+    &:after {
+      content: ' size: #{$h3-size} / line: #{$h3-line-height}';
+    }
+
+  }
+
+  h4 {
+
+    &:after {
+      content: ' size: #{$h4-size} / line: #{$h4-line-height}';
+    }
+
+  }
+
+  h5 {
+
+    &:after {
+      content: ' size: #{$h5-size} / line: #{$h5-line-height}';
+    }
+
+  }
+
+  h6 {
+
+    &:after {
+      content: ' size: #{$h6-size} / line: #{$h6-line-height}';
+    }
+
+  }
+
+}

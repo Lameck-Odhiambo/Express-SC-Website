@@ -1,0 +1,226 @@
+
+// ================================
+// Tier Navigation
+// ================================
+#fsPageBodyWrapper .navigation.tier {
+  $local-breakpoint-for-collapsible-menu: $bp-portrait;
+  
+  @include list-reset;
+  @include margin-x( $gutter * -1 );
+  @include transition();
+
+  // Hide at load to fight FOUC
+  max-height: 0;
+  overflow: hidden;
+
+  margin-bottom:40px;
+
+  .has-tier-navigation & {
+    max-height: 1000px;
+  }
+
+
+  // All (except the ".mobile") are hidden at Mobile View, shown in Other Views
+  display: none;
+  @include breakpoint( $local-breakpoint-for-collapsible-menu ) {
+    @include margin-x( 0 );
+    display: block;
+  }
+
+  // The ".mobile" is hidden at Other Views, shown in Mobile View
+  &.mobile {
+    display: block;
+    @include breakpoint( $local-breakpoint-for-collapsible-menu ) {
+      display: none;
+    }
+  }
+
+
+  &> header {
+    .fsElementHeaderContent {
+      @include tier-navigation-header-toggle( $local-breakpoint-for-collapsible-menu );
+
+      display: none;
+    }
+  }
+
+  &> .fsElementContent {
+    @include transition();
+    //max-height: 0;
+    //overflow: hidden;
+
+    @include breakpoint( $local-breakpoint-for-collapsible-menu ) {
+      //max-height: none;
+    }
+  }
+
+  &.open {
+
+    &> header .fsElementHeaderContent:after {
+      //content: $glyph-chevron-down;
+    }
+
+    &> .fsElementContent {
+      //max-height: 1000px;
+    }
+
+  }
+
+  li {
+    margin: $navigation-tier-vertical-margin $navigation-tier-horizontal-margin;
+  }
+
+
+
+  // !! CAUTION !! CAUTION !! CAUTION !! CAUTION
+  // Manage the view of the Navigation with CSS
+  /*
+    //Home: N/A
+    //Tier 1 (AKA: "Landing Page"): Show T3 (immediate children WITH immediate children expanded ONLY of current page)
+    //Tier 2: Show T3 (immediate children)
+    //Tier 3: Show T3 (siblings, with current page in 'active' state), Show T4 (immediate children ONLY of current page)
+    //Tier 4: Show T3 (immediate parent & parent's siblings, with current page ancestor in 'active' state), Show T4 (siblings ONLY of current page)
+    //Tier 5: ?? Show link back to immediate parent?
+  */
+
+
+  .fsNavCurrentPage > a,
+  .fsNavCurrentPageAncestor > a {
+    color: $m1 !important;
+    font-weight: 600;
+  }
+
+  // Common to all Tier Levels
+  [class*="fsNavLevel"] {
+    margin: 0;
+  }
+
+
+  .fsNavLevel1 li a {
+    display: block;
+    font-size:15px;
+    color:$g1;
+    font-family: $sans-serif;
+    font-weight:bold;
+  }
+
+
+
+
+  // hide all Tier 1 (AKA: "Landing Page") sibling containers
+  .fsNavLevel1 > li { display: none;  }
+
+
+  // hide all Tier 1 (AKA: "Landing Page") sibling links
+  .fsNavLevel1 > li > a { display: none; color: $g1; padding: 12px 0; }
+
+  // show current Tier 1 (AKA: "Landing Page") container
+  .fsNavLevel1 > li.fsNavCurrentPage,
+  .fsNavLevel1 > li.fsNavCurrentPageAncestor {
+    display: block;
+    font-size:15px;
+    color:$g1;
+    font-family: $sans-serif;
+    font-weight:bold;
+    .fsNavLevel2 > li { 
+      display: block;
+      &.fsNavCurrentPage,
+      &.fsNavCurrentPageAncestor {
+        .fsNavLevel3 > li { 
+          display: block;
+          &.fsNavCurrentPage,
+          &.fsNavCurrentPageAncestor {
+            .fsNavLevel4 > li { 
+              display: block;
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+  // Common for Tier 2 and lower Levels
+  // .hierarchy-tier-2 &,
+  // .hierarchy-tier-3 &,
+  // .hierarchy-tier-4 &,
+  // .hierarchy-tier-5 & {
+
+  // hide all Tier 2 sibling containers
+  .fsNavLevel2 > li {
+    display: none; border-top: 1px solid $background-stroke;
+    &:first-child {
+      border-top: none;
+    }
+  }
+
+  // hide all Tier 2 sibling links
+  .fsNavLevel2 > li > a {
+    color: $g1;
+    padding: 12px 0;
+    //padding-left: 20px;
+  }
+
+  // show current Tier 2 container
+  .fsNavLevel2 > li.fsNavCurrentPage,
+  .fsNavLevel2 > li.fsNavCurrentPageAncestor {
+    display: block;
+    font-size:15px;
+    color:$g1;
+    font-family: $sans-serif;
+    font-weight:bold;
+  }
+
+  // hide all Tier 3 sibling containers
+  .fsNavLevel3 > li { display: none; border-top: 1px solid $background-stroke; }
+
+  // hide all Tier 2 sibling links
+  .fsNavLevel3 > li > a {
+    color: rgba($g2,0.75); padding: 12px 0; padding-left: 20px;
+    &:before {
+      content: $glyph-angle-right;
+      font-family: $font-icon;
+      padding-right: 8px;
+      font-weight: 400;
+    }
+  }
+
+  // show current Tier 2 container
+  .fsNavLevel3 > li.fsNavCurrentPage,
+  .fsNavLevel3 > li.fsNavCurrentPageAncestor {
+    display: block;
+    font-size:15px;
+    color:$g2;
+    font-family: $sans-serif;
+    font-weight:bold;
+  }
+
+  // hide all Tier 4 sibling containers
+  .fsNavLevel4 > li { display: none; border-top: 1px solid $background-stroke; }
+
+  // hide all Tier 2 sibling links
+  .fsNavLevel4 > li > a { 
+    color: rgba($g2,0.75); padding: 12px 0; padding-left: 40px; 
+    &:before {
+      content: $glyph-angle-right;
+      font-family: $font-icon;
+      padding-right: 8px;
+      font-weight: 400;
+    }
+  }
+
+  // show current Tier 2 container
+  .fsNavLevel4 > li.fsNavCurrentPage,
+  .fsNavLevel4 > li.fsNavCurrentPageAncestor {
+    display: block;
+    font-size:15px;
+    color:$g2;
+    font-family: $sans-serif;
+    font-weight:bold;
+  }
+
+}
+
+.container.persistent-tier-navigation  .navigation.tier {
+  max-height: none;
+}

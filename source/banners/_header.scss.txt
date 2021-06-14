@@ -1,0 +1,757 @@
+#fsHeader {
+  //@include dev-color();
+
+  //padding: $gutter;
+  background-color: rgba($m1,0.75);
+  background-color: lighten( $m1, 5% );
+  position: relative;
+
+  @include breakpoint($bp-landscape) {
+    //@include padding-y( 0 );
+    padding-bottom: 0;
+  }
+
+  .has-masthead & {
+
+    @include breakpoint($bp-landscape) {
+      //@include background-color-alpha($m1, 0.9);
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 5;
+
+    }
+
+  }
+
+  .has-masthead .fsComposeMode & {
+    position: relative !important;
+    top: auto;
+    left: auto;
+    z-index: auto;
+  }
+
+  .fsComposeMode & {
+    overflow: hidden;
+  }
+
+
+  &>.fsBanner {
+    position: static;
+
+    @include breakpoint($bp-portrait) {
+      //@include compartment( 700px );
+      position: static;
+    }
+
+    @include breakpoint($bp-landscape) {
+      //@include compartment( 940px );
+      //padding-left: 280px + 20;
+    }
+
+    @include breakpoint($bp-desktop) {
+      //@include compartment();
+      //padding-left: 280px + 60;
+    }
+
+    .above-nav {
+      @include compartment();
+    }
+
+  }
+
+  header {
+    .fsElementTitle {
+      display: none;
+    }
+    .fsElementHeaderContent {
+      display: none;
+    }
+  }
+
+}
+
+
+// ====================
+// Branding
+
+#fsHeader .branding {
+
+  position: absolute;
+  left: 29px;
+
+  width: 175px;
+  //top: 10px;
+
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+
+
+  @include breakpoint($bp-phablet) {
+    width: 280px;//deviation
+  }
+
+  @include breakpoint($bp-portrait) {
+    //top: 20px;
+    width: 400px;//deviation
+  }
+
+  @include breakpoint($bp-landscape) {
+    position: absolute;
+    //top: 30px!important;
+    //left: 0;
+    width: 460px;//deviation
+  }
+
+  @include breakpoint($bp-desktop) {
+    width: 500px;//deviation
+  }
+
+
+  &> header {
+    .fsElementTitle { }
+    .fsElementHeaderContent { }
+  }
+
+  .fsElementContent {
+    text-align: center;
+
+    a {
+      display: block;
+      border: none;
+
+      -webkit-backface-visibility: hidden;
+      -moz-backface-visibility: hidden;
+      -ms-backface-visibility: hidden;
+      backface-visibility: hidden;
+
+      &:hover {
+        border: none;
+        opacity: 0.8;
+      }
+    }
+
+    img {
+      display: inline-block;
+      vertical-align: top;
+      width: 100%;
+      max-height: 170px;
+    }
+  }
+
+
+}
+
+// ====================
+// Utilities
+
+#fsHeader .utilities {
+  $local-mobile-button-offset: 5px;//( $gutter * -1 ) + 5;
+  //@include dev-color( #0db );
+  
+  @include breakpoint($bp-landscape) {
+    padding-bottom: 15px;
+    margin-bottom: 0px;
+    padding-top: 39px;
+    padding-right: 30px;
+  }
+
+  // @media max-width($bp-phablet) {
+  //   height:50px;
+  // }
+
+    padding-top: 23px;
+    padding-bottom: 2px;
+    margin-bottom: 0px;
+    padding-right: 110px;
+
+  // @include breakpoint($bp-desktop) {
+  //   padding-bottom: 15px;
+  //   margin-bottom: 0px;
+  //   padding-top: 39px;
+  // }
+
+  &> header {
+    .fsElementTitle { }
+    .fsElementHeaderContent { }
+  }
+
+  .fsElementContent {
+    // display: inline;
+    text-align: right;
+  }
+
+  section {
+    //@include breakpoint($bp-landscape) {
+      display: inline-block;
+      vertical-align: top;
+    //}
+  }
+
+  // ====================
+  // Utilities: Navigation
+  .navigation.utility {
+    @include list-reset();
+    display: none;
+
+    @include breakpoint($bp-landscape) {
+      @include inline-element( top );
+    }
+
+    ul {
+      margin: 0;
+      li {
+        @include inline-element( middle );
+      }
+    }
+
+    a {
+      @include header-utility-links();
+
+    }
+
+  }
+
+  // ====================
+  // Utilities:
+  // Search-trigger &
+  // Menu-trigger (shared)
+  .button.search-trigger,
+  .button.off-canvas-trigger {
+    display: block;
+    background: $header-utility-link-background;
+    color: $color-white;
+    width: $header-miscellaneous-button-width;
+    height: $header-miscellaneous-button-height;
+    text-indent: -999em;
+    text-align: left;
+    overflow: hidden;
+    position: absolute;
+    border: none;
+
+    @include breakpoint($bp-landscape) {
+      position: relative;
+      top: auto !important;
+      right: auto !important;
+      left: auto !important;
+      margin-left: 20px;
+    }
+
+    &:after {
+      @include font-icon( $glyph-close );
+      width: 100%;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      text-indent: 0;
+      text-align: center;
+      -webkit-transform: translateY( -50% );
+      -moz-transform: translateY( -50% );
+      -ms-transform: translateY( -50% );
+      -o-transform: translateY( -50% );
+      transform: translateY( -50% );
+    }
+
+  }
+
+  .search-trigger-container {
+    position: relative;
+  }
+
+  // ====================
+  // Utilities: Search-trigger
+  .button.search-trigger {
+    top: $local-mobile-button-offset;
+    right: $local-mobile-button-offset;
+    border: 1px solid $color-white;
+    width: 40px;
+    height: 40px;
+    padding: 12px 18px;
+
+    position: relative;
+    top: auto !important;
+    right: auto !important;
+    left: auto !important;
+    margin-left: 20px;
+
+    display: none;
+
+    .page-search-open & {
+      //color: $m3;
+    }
+
+    &:after {
+      content: $glyph-search;
+    }
+
+    @include breakpoint($bp-phablet) {
+      display: block;
+    }
+
+  }
+
+
+  // ====================
+  // Utilities: Menu-trigger
+  .button.off-canvas-trigger {
+
+    @include breakpoint($bp-phablet) {
+      width: 85px;
+      height: 85px;
+    }
+
+    top: 0;
+    right: 0;
+    background: $m1;
+    border-left:1px solid rgba($color-black,0.1);
+    border-radius: 0;
+
+    width:63px;
+    height:49px;
+
+    // &:after {
+    //   content: $glyph-bars;
+    // }
+
+    &:before, &:after {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        height: 2px;
+        width: 23px;
+        content: '';
+        background: #fff;
+    }
+
+    &:after {
+        box-shadow: 0 5px 0 0 #fff;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        -webkit-transition: box-shadow .3s, -webkit-transform .3s;
+        transition: box-shadow .3s, transform .3s;
+    }
+
+    &:before {
+        margin-top: -5px;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        -webkit-transition: margin-top .3s, -webkit-transform .3s;
+        transition: margin-top .3s, transform .3s;
+    }
+
+    @include breakpoint($bp-landscape) {
+      display: none;
+    }
+  }
+
+
+}
+
+// ====================
+// (Page) Navigation
+
+#fsHeader .navigation.container {
+  //@include dev-color( #0bd );
+  display: none;
+
+  @include breakpoint($bp-landscape) {
+    display: block;
+  }
+
+  &> header {
+    .fsElementTitle { }
+    .fsElementHeaderContent { }
+  }
+
+  &> .fsElementContent {
+    @include breakpoint($bp-desktop) {
+      position: relative;
+    }
+  }
+
+  // ====================
+  // (Main, Page) Navigation
+  // NOTE: The majority of these styles are found in navigation/_main.scss
+  .navigation.main {
+    @include breakpoint($bp-desktop) {
+      margin-right: ( $gutter * 2 );
+    }
+  }
+
+
+  // ====================
+  // (Page) Navigation: Search-trigger
+  .button.search-trigger {
+    display: none;
+    background: none;
+    border: none;
+
+    padding: $gutter;
+
+    color: $m2;
+    text-indent: -999em;
+    text-align: left;
+    overflow: hidden;
+    position: absolute;
+    top: 50%;
+    right: -10px;
+    
+    
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+
+    .page-search-open & {
+      color: $m3;
+    }
+
+    &:after {
+      @include font-icon( $glyph-search );
+      font-size: 22px;
+      width: 100%;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      text-indent: 0;
+      text-align: center;
+      -webkit-transform: translateY( -50% );
+      -moz-transform: translateY( -50% );
+      -ms-transform: translateY( -50% );
+      -o-transform: translateY( -50% );
+      transform: translateY( -50% );
+    }
+
+
+    @include breakpoint($bp-desktop) {
+      display: block;
+    }
+
+  }
+
+}
+
+// ====================
+// (Tier) Navigation
+
+.sub-navigation {
+  $local-breakpoint-for-collapsible-menu: $bp-portrait;
+  display: none;
+  //@include dev-color();
+  background: $sub-navigation-background-color;
+  
+  
+
+  .has-sub-navigation & {
+    //@include dev-color( #0f0 );
+    display: block;
+    @include breakpoint($local-breakpoint-for-collapsible-menu) {
+      display: none;
+    }
+    &.masthead-alternate {
+      display: none;
+    }
+  }
+
+  .has-masthead.has-sub-navigation & {
+    // presence of the masthead image (on tiers) necessitates positioning a copy of the sub-navigation
+
+    @include breakpoint( $local-breakpoint-for-collapsible-menu ) {
+      //heh. Oh, yeah. You still want to use the 'regular' at Mobile/Portrait Views
+      display: none;
+
+      &.masthead-alternate {
+
+        display: block;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        z-index: 1;
+
+      }
+    }
+
+
+  }
+
+  .home { display: none !important; }
+
+  &> header {
+    .fsElementTitle {
+      display: none;
+    }
+    .fsElementHeaderContent {
+      @include tier-navigation-header-toggle( $local-breakpoint-for-collapsible-menu );
+
+      &.button-back {
+        &:after {
+          content: $glyph-chevron-left;
+          right: auto;
+          left: 0;
+        }
+      }
+    }
+  }
+
+  &> .fsElementContent {
+    //@include transition();
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    backface-visibility: hidden;
+
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+
+    
+    max-height: 0;
+    overflow: hidden;
+
+    @include breakpoint( $local-breakpoint-for-collapsible-menu ) {
+      max-height: none;
+    }
+
+  }
+
+  .sub-navigation-open & {
+    &> header .fsElementHeaderContent:after {
+      content: $glyph-chevron-down;
+    }
+
+    &> .fsElementContent {
+      max-height: 1000px;
+      overflow-y: auto;
+    }
+  }
+
+  nav {
+    @include list-reset();
+    @include compartment();
+    a {
+      color:$color-white;
+    }
+
+    ul {
+      margin:0px;
+    }
+
+    ul.fsNavLevel1 {
+      margin: 0;
+
+      &> li {
+
+        border-top: 1px solid $color-white;
+        @include breakpoint($local-breakpoint-for-collapsible-menu) {
+          @include inline-element( middle );
+          border-top: none;
+
+        }
+
+        &> a {
+          @include tier-navigation-link-parent();
+
+          @include breakpoint($local-breakpoint-for-collapsible-menu) {
+            @include header-sub-navigation-links( );
+          }
+
+        }
+
+        &.fsNavCurrentPage > a,
+        &.fsNavCurrentPageAncestor > a {
+          @include header-navigation-links-active( );
+        }
+
+      }
+    }
+    ul.fsNavLevel2 { 
+      > li {
+        border-top: 1px solid $color-white;
+        > a {
+          @include tier-navigation-link-parent();
+          padding-left:40px;
+          opacity: 0.85;
+        }
+      }
+    }
+    ul.fsNavLevel3 { 
+      > li {
+        border-top: 1px solid $color-white;
+        > a {
+          @include tier-navigation-link-parent();
+          padding-left:60px;
+          opacity: 0.75;
+        }
+      }
+    }
+    ul.fsNavLevel4 { 
+      > li {
+        border-top: 1px solid $color-white;
+        > a {
+          @include tier-navigation-link-parent();
+          padding-left:80px;
+          opacity: 0.65;
+        }
+      }
+    }
+
+  }
+
+  &+ #fsPageBodyWrapper {
+    margin-top: ( $gutter * 1.5 );
+    @include breakpoint( $bp-landscape - 1 ) {
+      margin-top: 0;
+    }
+  }
+
+}
+
+// ====================
+// Search (drop-down)
+
+#fsHeader .fsSearch.search {
+  @include transition(width);
+  @include background-color-alpha( $m1, 0.95 );
+  //display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  width: 0px;
+  //max-height: 0;
+  overflow: hidden;
+
+  .page-search-open & {
+    //max-height: 66px;
+    //border-top-color: $color-white;
+    //border-top-color: returnRGBA( $color-white, 0.2 );
+    border: 1px solid $color-white;
+    border-radius:5px;
+    //added 
+    position: absolute;
+    right: 0!important;
+    width: 370px;
+    left: initial;
+    top: 0;
+    @media (max-width:599px) {
+      display: none!important;
+    }
+  }
+
+  &> header {
+    .fsElementTitle { }
+    .fsElementHeaderContent { }
+  }
+
+  .fsElementContent {
+
+    td.gsc-search-button {
+      @include transition();
+      @include breakpoint($bp-phablet) {
+        background-color: transparent;
+      }
+    }
+
+    input.gsc-input {
+      @include transition();
+      @include breakpoint($bp-phablet) {
+        padding-left: ( $gutter - 5px ) !important;
+      }
+    }
+
+  }
+
+}
+
+
+
+
+
+/*
+// ====================
+// Secret Mobile Navigation
+
+#fsHeader .secondaryNav { display: none; }
+.container.persistent-tier-navigation {
+  @include dev-color();
+  display: block;
+
+  .inner {
+    @include dev-color();
+  }
+
+  .navigation.tier.mobile {
+    display: block !important;
+    @include dev-color();
+
+    .fsElementContent {
+      @include dev-color();
+    }
+
+    nav {
+      @include dev-color();
+      @include list-reset();
+
+      ul {
+        @include dev-color();
+        margin: 0;
+        padding: 0;
+      }
+
+      li {
+        border-top: 1px solid $background-stroke;
+      }
+
+      a {
+        display: block;
+        font-size:15px;
+        color:$g1;
+        font-family: $sans-serif;
+        font-weight: 600;
+        padding: 12px $gutter;
+      }
+
+      .fsNavCurrentPage > a,
+      .fsNavCurrentPageAncestor > a {
+        color: $m1;
+        font-weight: 600;
+      }
+
+      .fsNavLevel2 { display: none; }
+    }
+  }
+
+  @include breakpoint($bp-landscape) {
+    display: none;
+  }
+
+  .home & { display: none; }
+}
+*/
+
+
+
+
+
+
+#fsHeader .thing {
+
+  &> header {
+    .fsElementTitle { }
+    .fsElementHeaderContent { }
+  }
+
+  .fsElementContent { }
+
+}

@@ -1,0 +1,191 @@
+.navigation.main {
+
+  @include list-reset();
+  background:$m1;
+  display: none;
+
+  -webkit-box-shadow: 0 2px 0 returnRGBA( $color-black, 0.15 );
+  -moz-box-shadow: 0 2px 0 returnRGBA( $color-black, 0.15 );
+  box-shadow: 0 2px 0 returnRGBA( $color-black, 0.15 );
+
+
+  // ====================
+  // (Main, Page) Navigation
+  @include breakpoint($bp-landscape) {
+    display: block;
+  }
+  nav {
+    @include list-reset();
+    @include compartment();
+    ul.fsNavLevel1 {
+      display: flex;
+      justify-content: center;
+      margin-top: 0;
+
+      &> li {
+        flex: 0 1 auto;
+
+        @include modernizr(flexbox, false) {
+          display: inline-block;
+        }
+
+        &> a {
+          @include header-navigation-links();
+          display: block;
+        }
+
+        &:hover {
+          > a {
+            color: $m3;
+            background:$background-color;
+            opacity: 1;
+          }
+        }
+
+        &.fsNavCurrentPage > a,
+        &.fsNavCurrentPageAncestor > a {
+          //@include header-navigation-links-hover( );
+          color:$color-white;
+          background:rgba($color-black,0.25);
+          opacity: 1;
+        }
+
+      }
+    }
+
+  }
+
+
+  // ====================
+  // Drop-down(s) (AKA ".fsNavPageInfo")
+
+  .fsNavPageInfo {
+
+    @include dropdown( 100% );
+
+    //experiment
+    //top: calc( 100% - #{$header-navigation-border-bottom-width} );
+
+    padding: ($gutter * 1.5) $gutter;
+    background: $background-color;
+    text-align: left;
+
+    border: 1px solid $background-stroke;
+
+    border-top: 1px solid $color-white;
+    border-top-color: returnRGBA( $color-white, 0.2 );
+
+    -webkit-box-shadow: 0 2.6px 4px returnRGBA( $color-black, 0.2 );
+    -moz-box-shadow: 0 2.6px 4px returnRGBA( $color-black, 0.2 );
+    box-shadow: 0 2.6px 4px returnRGBA( $color-black, 0.2 );
+
+
+    .fsNavPageDescription {
+      @include inline-element( top );
+      //width: percentage( 400 / 1180 );
+      font-size: 15px;
+      line-height: ( 22 / 15 );
+      font-family: $sans-serif;
+      color: $g2;
+
+      width: 35%;
+      padding-right: 4%;
+      border-right: 1px solid $background-stroke;
+
+      h3,
+      a {
+        display: block;
+        margin: ( $body-line-height *  $body-font-size ) 0 0;
+        padding: 0;
+        font-size: 21px;
+        font-weight: 400;
+        line-height: ( 30 / 21 );
+        color: $m2;
+        font-family: $sans-serif;
+        margin-bottom: 6px;
+        &,
+        &:hover {
+          background: none;
+        }
+
+        &:first-child {
+          margin-top: 0;
+        }
+      }
+
+      ul {
+        margin-top:0px;
+        > li {
+          &:first-child {
+            border-bottom:1px dashed $background-stroke;
+            padding-bottom: 18px;
+            margin-bottom: 12px;
+          }
+        }
+      }
+
+      //p {
+      //  margin: 0;
+      //  display: block;
+      //
+      //}
+
+      //br { display: none; }
+    }
+
+    .fsNavPageThumbnail {
+      width: 28%;
+      display: inline-block;
+      text-align: center;
+      border-right: 1px solid $background-stroke;
+    }
+
+    ul.fsNavLevel2 {
+      @include inline-element( top );
+      width: percentage( 210 / 1180 );
+      padding-left: $gutter;
+      margin-top: 0;
+
+
+      &> li {
+        //@include margin-x( $gutter * -0.5 );
+        position: relative;
+
+        &:after {
+          @include margin-x( $gutter * 0.5 );
+          @include background-color-alpha( $color-white, 0.2 );
+          content: '';
+          display: block;
+          position: absolute;
+          top: 0;
+          right: 0;
+          left: 0;
+          height: 1px;
+        }
+
+        &:first-child:after { content: normal; }
+
+        &:first-child {
+          > a {
+            padding-top:0px;
+          }
+        }
+      
+        > a {
+          border-bottom: 1px dashed $background-stroke;
+        }
+
+      }
+    }
+
+    a {
+      @include header-navigation-dropdown-links();
+    }
+
+  }
+
+  li:hover .fsNavPageInfo {
+    display: block;
+  }
+
+}

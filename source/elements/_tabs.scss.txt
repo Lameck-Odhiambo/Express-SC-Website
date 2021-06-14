@@ -1,0 +1,92 @@
+.fsTabs{
+  padding: 0;
+  background: none;
+  border: 0;
+  margin-bottom: $gutter;
+
+  .fsTabsNav {
+    margin: 0 !important;
+    padding: 0 !important;
+    display: none; //hides nav for mobile accordion functionality
+
+
+
+    @include breakpoint( $bp-portrait ) {
+      display: block;
+    }
+
+    li {
+      margin-right: $tabs-horizontal-margin;
+
+      a {
+        display: block;
+        margin: 0;
+        padding: $tabs-vertical-padding $tabs-horizontal-padding;
+
+        background: $tabs-background-color;
+
+        font-size: $tabs-size;
+        line-height: $tabs-line-height;
+        color: $tabs-color;
+        font-family: $sans-serif;
+        letter-spacing: normal;
+        font-style: normal;
+        font-weight: $tabs-weight;
+        
+        //border: $tabs-border-width $tabs-border-style $tabs-border-color;
+
+
+        &:hover {
+          opacity: 1;
+          background: $tabs-background-color-hover;
+          color: $tabs-color-hover;
+          border-color: $tabs-border-color-hover;
+        }
+      }
+
+      &.fsStateSelected { //active tab
+        position: relative;
+        a {
+          background: $tabs-background-color-active !important;
+          color: $tabs-color-active;
+          border-color: $tabs-border-color-active;
+          opacity: 1;
+        }
+        &:after {
+          content:'';
+          background:$color-white !important;
+          left:50%;
+          transform: translateX(-50%);
+          position: absolute;
+          border-left: 12px solid transparent;
+          border-right: 12px solid transparent;
+          border-top: 10px solid $tabs-background-color-active;
+        }
+      }
+
+    }
+
+  }// end tabs navigation
+
+  .fsElementContent {
+    @include padding-x( 0 );
+  }
+
+  //for tab to accordion on mobile this reuses the accordion variables
+  //be sure to update those so that these automatically match the styling
+
+  @include shared-accordion-fsPanel( true );
+
+}
+
+
+
+// craziness to override app css
+// this is to display the hidden header for accordion functionality on mobile
+.fsPanelGroup.fsTabs>.fsElementContent>.fsPanel>.fsElementActionButtonContainer,
+.fsPanelGroup.fsTabs>.fsElementContent>.fsPanel>header, .fsPanelGroup.fsTabs>.fsElementContent>.fsPanel:not(.fsStateOpen) {
+  display: block;
+  @include breakpoint( $bp-portrait ) {
+    display: none;
+  }
+}

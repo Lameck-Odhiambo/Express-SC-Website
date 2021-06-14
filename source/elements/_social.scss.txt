@@ -1,0 +1,314 @@
+/* Social Elements */
+
+/*--Facebook--*/
+.fsFacebook {
+  .fsFacebookList {
+    @include list-reset;
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+
+    li {
+      display: block;
+      margin-bottom: 30px;
+
+      &:first-child {margin-top: $gutter;}
+
+      a:not(.fsFacebookFollow) {
+        word-wrap: break-word;
+      }
+    }
+
+    .fsFacebookFrom {
+      display: block;
+      font-weight: inherit;
+      font-size: inherit;
+      color: inherit;
+    }
+
+    .fsFacebookExtras {
+      margin-top: 10px;
+
+      .fsFacebookThumb {
+        float: left;
+        margin: 0 $gutter 0 0;
+        width: 28%;
+      }
+
+      .fsFacebookTitle {
+        float: left;
+        line-height: 1;
+        width: 60%;
+
+        &[href*="https://www.facebook.com/finalsite/photos"] {
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+        }
+      }
+
+      .fsFacebookCaption {
+        float: left;
+        font-size: inherit;
+      }
+
+      .fsFacebookDesc {
+        clear: both;
+        font-style: italic;
+      }
+
+      .fsFacebookLikes {
+        clear: both;
+        padding-top: 10px;
+        font-size: inherit;
+        font-style: italic;
+        color: inherit;
+      }
+
+    }
+
+    .fsFacebookFollow {
+      margin-top: $gutter;
+
+      a {
+        background-color: inherit;
+        color: inherit;
+        font-size: inherit;
+        padding: 5px 10px;
+        text-transform: capitalize;
+
+        &:hover {
+          background-color: inherit;
+          color: inherit;
+        }
+      }
+    }
+
+  }
+
+}
+
+/*--Twitter--*/
+.fsTwitter {
+  .tweets {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+      display: block;
+      width: 100%;
+      margin-bottom: $gutter;
+
+      a {
+        color: $m2;
+        &:hover {
+          color: $m1;
+        }
+      } // a
+
+      &:first-child {margin-top: $gutter;}
+
+      .header {
+        position: relative;
+        &:after {
+          content: '';
+          display: table;
+          clear: both;
+        } // after
+        time {
+          position: relative;
+          display: inline-block;
+          vertical-align: middle;
+          float: right;
+          width: 15%;
+          text-align: right;
+          font-size: 12px;
+          color: $m1;
+          abbr {
+            text-decoration: none;
+            border: 0;
+          } // abbr
+          &:hover {
+            color: $m2;
+          } // hover
+        } // time
+
+        .p-author {
+          position: relative;
+          display: inline-block;
+          vertical-align: middle;
+          float: left;
+          width: 85%;
+          > .profile {
+            &:after {
+              content: '';
+              display: table;
+              clear: both;
+            } // after
+
+            .avatar {
+              position: relative;
+              display: inline-block;
+              float: left;
+              width: 25%;
+
+              img {
+                width: 100%;
+                height: auto;
+              } //img
+            } //avatar
+
+            .full-name,
+            .p-nickname {
+              margin: 0;
+              padding: 0 0 0 10px;
+              position: relative;
+              display: inline-block;
+              float: left;
+              width: 70%;
+              vertical-align: middle;
+              line-height: 16px;
+              font-size: 14px;
+              font-weight: bold;
+            }
+            .full-name {
+              margin-top: 15px;
+            }
+          }
+        }
+      }
+
+      .e-entry-content {
+        font-size: 13px;
+        line-height: 18px;
+        .inline-media {
+          img {
+            width: 100%;
+            height: auto;
+          } // img
+        } // inline-media
+      } // e-entry-content
+
+      .footer {
+        .stats-narrow,
+        .stats-wide {
+          display: none;
+        }
+        .expand {
+          display: inline-block;
+          float: left;
+          color: $m1;
+          b {
+            display: none;
+          }
+          &:hover {
+            color: $m2;
+          }
+          &:before {
+            display: block;
+            font-family: $font-icon;
+            content: '\f067';
+          }
+        } // expand
+        .tweet-actions {
+          margin: 0;
+          padding: 0;
+          text-align: right;
+          li {
+            margin: 0 10px 0 0;
+            padding: 0;
+            position: relative;
+            display: inline-block;
+            width: auto;
+            a {
+              color: $m1;
+              b {
+                display: none;
+              }
+              &:hover {
+                color: $m2;
+              }
+              i {
+                font-style: normal;
+                &:before {
+                  display: block;
+                  font-family: $font-icon;
+                }
+              }
+            }
+            .reply-action {
+              i {
+                &:before {
+                  content: '\f112';
+                }
+              }
+            }
+            .retweet-action {
+              i {
+                &:before {
+                  content: '\f079';
+                }
+              }
+            }
+            .favorite-action {
+              i {
+                &:before {
+                  content: '\f005';
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/*--Youtube--*/
+.fsYoutube {
+  .fsSocialVideoFrame {margin-top: $gutter;}
+
+  .fsYoutubeList {
+    @include list-reset;
+
+    li {
+      display: block;
+      margin-bottom: 20px;
+      width: 100%;
+
+      &:first-child {margin-top: $gutter;}
+    }
+
+    .fsYoutubeThumb {
+      margin: 0 $gutter $gutter 0;
+      float: left;
+    }
+
+    .fsYoutubeTitle {
+      font-weight: inherit;
+      font-size: inherit;
+      color: inherit;
+    }
+
+    .fsYoutubeViews {
+      font-size: inherit;
+      font-style: italic;
+      color: inherit;
+    }
+
+    .fsYoutubeDesc {
+      margin-top: 5px;
+    }
+  }
+}
+
+
+/*--Vimeo--*/
+
+
+
+/*--Instagram--*/
+
+
+
+/*--Flickr--*/
